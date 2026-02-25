@@ -32,7 +32,7 @@
         radial-gradient(1200px 700px at 50% 110%, rgba(251,191,36,.14), transparent 55%),
         var(--bg);
     }
-    .wrap{max-width:1150px; margin:22px auto; padding:0 14px 40px;}
+    .wrap{max-width:1200px; margin:22px auto; padding:0 14px 40px;}
     .topbar{
       display:flex; gap:14px; align-items:center; justify-content:space-between;
       padding:14px; border:1px solid var(--line); border-radius:var(--radius);
@@ -59,7 +59,7 @@
       padding:10px 12px;
       border-radius:12px;
       cursor:pointer;
-      font-weight:700;
+      font-weight:800;
       font-size:13px;
       letter-spacing:.2px;
       transition:transform .05s ease, background .2s ease, border-color .2s ease;
@@ -72,21 +72,21 @@
       border-color:rgba(59,130,246,.45);
     }
     .primary:hover{background:linear-gradient(180deg, rgba(59,130,246,1), rgba(37,99,235,1))}
+    .success{
+      background:linear-gradient(180deg, rgba(34,197,94,.95), rgba(22,163,74,.92));
+      border-color:rgba(34,197,94,.45);
+    }
+    .success:hover{background:linear-gradient(180deg, rgba(34,197,94,1), rgba(22,163,74,1))}
     .danger{
       background:linear-gradient(180deg, rgba(239,68,68,.92), rgba(220,38,38,.92));
       border-color:rgba(239,68,68,.35);
     }
     .danger:hover{background:linear-gradient(180deg, rgba(239,68,68,1), rgba(220,38,38,1))}
     .ghost{background:rgba(255,255,255,.04)}
-    .grid{
-      margin-top:14px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-    }
-    @media(min-width:980px){
-      .grid{grid-template-columns: 1.15fr .85fr;}
-    }
+
+    .grid{margin-top:14px; display:grid; grid-template-columns: 1fr; gap:14px;}
+    @media(min-width:980px){ .grid{grid-template-columns: 1.15fr .85fr;} }
+
     .card{
       border:1px solid var(--line);
       background:linear-gradient(180deg, rgba(18,27,46,.92), rgba(15,23,42,.88));
@@ -104,7 +104,7 @@
       background:rgba(0,0,0,.12);
       flex-wrap:wrap;
     }
-    .card .sub{font-size:12px; color:var(--muted); font-weight:600}
+    .card .sub{font-size:12px; color:var(--muted); font-weight:650}
     .content{padding:14px}
     .row{display:grid; grid-template-columns: 1fr; gap:10px; margin-bottom:10px}
     @media(min-width:640px){ .row.two{grid-template-columns:1fr 1fr} }
@@ -123,6 +123,17 @@
     input::placeholder, textarea::placeholder{color:rgba(238,242,255,.40)}
     .divider{height:1px; background:var(--line); margin:12px 0}
     .small{font-size:12px; color:var(--muted)}
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:12px;
+      color:var(--muted);
+      margin-top:8px;
+    }
+
     .checklist{display:grid; grid-template-columns:1fr; gap:10px;}
     .item{
       border:1px solid rgba(255,255,255,.12);
@@ -131,18 +142,10 @@
       padding:10px;
     }
     .itemTop{display:flex; gap:10px; align-items:flex-start;}
-    .itemTop input[type="checkbox"]{
-      width:18px; height:18px; margin-top:2px;
-      accent-color: var(--ok);
-    }
-    .itemTitle{font-weight:800; font-size:13px; margin:0;}
+    .itemTop input[type="checkbox"]{width:18px; height:18px; margin-top:2px; accent-color: var(--ok);}
+    .itemTitle{font-weight:900; font-size:13px; margin:0;}
     .itemHelp{margin:2px 0 0; font-size:12px; color:var(--muted);}
-    .miniRow{
-      margin-top:8px;
-      display:grid;
-      grid-template-columns:1fr;
-      gap:8px;
-    }
+    .miniRow{margin-top:8px; display:grid; grid-template-columns:1fr; gap:8px;}
     @media(min-width:680px){ .miniRow.two{grid-template-columns:1fr 1fr} }
 
     .rightCol .card{position:sticky; top:14px}
@@ -160,7 +163,7 @@
       vertical-align:top;
       font-size:12px;
     }
-    .table th{color:var(--muted); text-align:left; background:rgba(0,0,0,.16); font-weight:800}
+    .table th{color:var(--muted); text-align:left; background:rgba(0,0,0,.16); font-weight:900}
     .table tr:last-child td{border-bottom:none}
     .table input, .table select{padding:8px 9px; border-radius:10px;}
     .inlineBtns{display:flex; gap:8px; flex-wrap:wrap}
@@ -183,25 +186,16 @@
     .printHint{font-size:12px; color:var(--muted); text-align:right}
 
     /* Photos */
-    .photoGrid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:10px;
-    }
-    @media(min-width:640px){
-      .photoGrid{grid-template-columns:1fr 1fr;}
-    }
+    .photoGrid{display:grid; grid-template-columns:1fr; gap:10px;}
+    @media(min-width:640px){ .photoGrid{grid-template-columns:1fr 1fr;} }
     .photoBox{
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.04);
       border-radius:14px;
       padding:10px;
     }
-    .photoTop{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      margin-bottom:8px;
-    }
-    .photoTop .name{font-weight:800; font-size:13px}
+    .photoTop{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;}
+    .photoTop .name{font-weight:900; font-size:13px}
     .thumb{
       width:100%;
       aspect-ratio: 4 / 3;
@@ -211,16 +205,29 @@
       overflow:hidden;
       display:flex; align-items:center; justify-content:center;
     }
-    .thumb img{
-      width:100%; height:100%;
-      object-fit:cover;
-      display:none;
-    }
-    .thumb .placeholder{
-      color:rgba(238,242,255,.55);
-      font-size:12px;
+    .thumb img{width:100%; height:100%; object-fit:cover; display:none;}
+    .thumb .placeholder{color:rgba(238,242,255,.55); font-size:12px; padding:10px; text-align:center;}
+
+    /* History */
+    .histTop{display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:space-between;}
+    .histTop .left{flex:1; min-width:200px;}
+    .histList{display:flex; flex-direction:column; gap:8px; margin-top:10px;}
+    .histItem{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:14px;
       padding:10px;
-      text-align:center;
+      display:flex; gap:10px; align-items:flex-start; justify-content:space-between;
+    }
+    .histMeta{min-width:0}
+    .histMeta .t{font-weight:900; font-size:13px; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .histMeta .s{margin:3px 0 0; font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .histBtns{display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end}
+    .miniBtn{
+      padding:8px 10px;
+      border-radius:12px;
+      font-size:12px;
+      font-weight:900;
     }
 
     /* Modal */
@@ -255,29 +262,13 @@
       padding:10px;
       margin-bottom:12px;
     }
-    .twoCols{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:12px;
-    }
-    @media(min-width:900px){
-      .twoCols{grid-template-columns:1fr 1fr 1fr;}
-    }
+    .twoCols{display:grid; grid-template-columns:1fr; gap:12px;}
+    @media(min-width:900px){ .twoCols{grid-template-columns:1fr 1fr 1fr;} }
     .sectionEditor textarea{
       min-height:240px;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
     .sectionEditor h4{margin:0 0 8px; font-size:13px}
-    .pill{
-      display:inline-flex; gap:8px; align-items:center;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.05);
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:12px;
-      color:var(--muted);
-      margin-top:8px;
-    }
 
     @media print{
       body{background:#fff; color:#000}
@@ -291,6 +282,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="topbar">
@@ -298,21 +290,21 @@
         <div class="mark" title="BF Outdoor Services">BF</div>
         <div class="title">
           <h1>Pool Maintenance Checklist</h1>
-          <p>BF Outdoor Services • Save as Image for records • Before/After photos supported</p>
+          <p>Finish Visit saves pool-to-pool history on this device</p>
         </div>
       </div>
 
       <div class="actions">
-        <button class="ghost" id="btnCustomize">Customize Tasks</button>
-        <button class="ghost" id="btnLoad">Load Last</button>
-        <button class="ghost" id="btnSave">Save Draft</button>
-        <button class="ghost" id="btnExport">Export JSON</button>
+        <button class="ghost" id="btnCustomize" type="button">Customize Tasks</button>
+        <button class="ghost" id="btnNewVisit" type="button">New Visit</button>
+        <button class="success" id="btnFinish" type="button">Finish Visit / Save Record</button>
+        <button class="primary" id="btnImage" type="button">Save as Image</button>
+        <button class="ghost" id="btnExport" type="button">Export JSON</button>
         <label class="btn ghost" for="importFile" style="display:inline-flex;align-items:center;gap:8px;">
           Import JSON
         </label>
         <input id="importFile" type="file" accept="application/json" style="display:none" />
-        <button class="primary" id="btnImage">Save as Image</button>
-        <button class="danger" id="btnReset">Reset</button>
+        <button class="danger" id="btnResetAll" type="button">Reset</button>
       </div>
     </div>
 
@@ -320,34 +312,16 @@
       <!-- LEFT -->
       <div class="leftCol">
         <div class="card">
-          <h2>
-            1) Job Info
-            <span class="sub">Customer, site, tech, pool details</span>
-          </h2>
+          <h2>1) Job Info <span class="sub">Customer, site, tech, pool details</span></h2>
           <div class="content">
             <div class="row two">
-              <div>
-                <label>Customer Name</label>
-                <input data-k="job.customer" placeholder="e.g., Steve Emberton" />
-              </div>
-              <div>
-                <label>Service Address</label>
-                <input data-k="job.address" placeholder="Street, City, State" />
-              </div>
+              <div><label>Customer Name</label><input data-k="job.customer" placeholder="e.g., Emberton, Steve" /></div>
+              <div><label>Service Address</label><input data-k="job.address" placeholder="Street, City, State" /></div>
             </div>
             <div class="row three">
-              <div>
-                <label>Date</label>
-                <input data-k="job.date" type="date" />
-              </div>
-              <div>
-                <label>Time</label>
-                <input data-k="job.time" type="time" />
-              </div>
-              <div>
-                <label>Technician</label>
-                <input data-k="job.tech" placeholder="Tech name" />
-              </div>
+              <div><label>Date</label><input data-k="job.date" type="date" /></div>
+              <div><label>Time</label><input data-k="job.time" type="time" /></div>
+              <div><label>Technician</label><input data-k="job.tech" placeholder="Tech name" /></div>
             </div>
             <div class="row three">
               <div>
@@ -360,24 +334,15 @@
                   <option>Spool / Combo</option>
                 </select>
               </div>
-              <div>
-                <label>Gallons</label>
-                <input data-k="job.gallons" inputmode="numeric" placeholder="e.g., 12832" />
-              </div>
-              <div>
-                <label>Weather / Notes</label>
-                <input data-k="job.weather" placeholder="Sunny / cloudy / etc." />
-              </div>
+              <div><label>Gallons</label><input data-k="job.gallons" inputmode="numeric" placeholder="e.g., 12832" /></div>
+              <div><label>Weather / Notes</label><input data-k="job.weather" placeholder="Sunny / cloudy / etc." /></div>
             </div>
+            <span class="pill">Tip: Finish Visit creates a history record (pool-to-pool).</span>
           </div>
         </div>
 
-        <!-- Photos -->
         <div class="card">
-          <h2>
-            Photos
-            <span class="sub">Before + After (optional)</span>
-          </h2>
+          <h2>Photos <span class="sub">Before + After (optional)</span></h2>
           <div class="content">
             <div class="photoGrid">
               <div class="photoBox">
@@ -393,7 +358,6 @@
                   <img id="beforeImg" alt="Before preview" />
                   <div class="placeholder" id="beforePh">No before photo added.</div>
                 </div>
-                <div class="small" style="margin-top:8px;">Tip: Take a quick “overall” shot (waterline + deck area).</div>
               </div>
 
               <div class="photoBox">
@@ -409,60 +373,41 @@
                   <img id="afterImg" alt="After preview" />
                   <div class="placeholder" id="afterPh">No after photo added.</div>
                 </div>
-                <div class="small" style="margin-top:8px;">Tip: Match the angle of the before photo if you can.</div>
               </div>
             </div>
-
             <div class="divider"></div>
-            <div class="small">
-              Photos are included in the <b>Record Snapshot</b> and captured when you hit <b>Save as Image</b>.
-              (Export JSON will be larger if photos are included.)
-            </div>
+            <div class="small">Photos are included in the Record Snapshot and saved in history.</div>
           </div>
         </div>
 
         <div class="card">
-          <h2>
-            2) Water Test
-            <span class="sub">Record chemistry readings</span>
-          </h2>
+          <h2>2) Water Test <span class="sub">Record chemistry readings</span></h2>
           <div class="content">
             <div class="row three">
-              <div><label>FC (Free Chlorine)</label><input data-k="water.fc" inputmode="decimal" placeholder="ppm" /></div>
-              <div><label>CC (Combined Chlorine)</label><input data-k="water.cc" inputmode="decimal" placeholder="ppm" /></div>
+              <div><label>FC</label><input data-k="water.fc" inputmode="decimal" placeholder="ppm" /></div>
+              <div><label>CC</label><input data-k="water.cc" inputmode="decimal" placeholder="ppm" /></div>
               <div><label>pH</label><input data-k="water.ph" inputmode="decimal" placeholder="e.g., 7.5" /></div>
             </div>
             <div class="row three">
-              <div><label>TA (Total Alkalinity)</label><input data-k="water.ta" inputmode="decimal" placeholder="ppm" /></div>
-              <div><label>CH (Calcium Hardness)</label><input data-k="water.ch" inputmode="decimal" placeholder="ppm" /></div>
-              <div><label>CYA (Stabilizer)</label><input data-k="water.cya" inputmode="decimal" placeholder="ppm" /></div>
+              <div><label>TA</label><input data-k="water.ta" inputmode="decimal" placeholder="ppm" /></div>
+              <div><label>CH</label><input data-k="water.ch" inputmode="decimal" placeholder="ppm" /></div>
+              <div><label>CYA</label><input data-k="water.cya" inputmode="decimal" placeholder="ppm" /></div>
             </div>
             <div class="row three">
-              <div><label>Salt (if SWG)</label><input data-k="water.salt" inputmode="decimal" placeholder="ppm" /></div>
-              <div><label>Water Temp</label><input data-k="water.temp" inputmode="decimal" placeholder="°F" /></div>
-              <div><label>Phosphates (optional)</label><input data-k="water.phos" inputmode="decimal" placeholder="ppb" /></div>
+              <div><label>Salt</label><input data-k="water.salt" inputmode="decimal" placeholder="ppm" /></div>
+              <div><label>Temp</label><input data-k="water.temp" inputmode="decimal" placeholder="°F" /></div>
+              <div><label>Phosphates (opt)</label><input data-k="water.phos" inputmode="decimal" placeholder="ppb" /></div>
             </div>
             <div>
-              <label>Adjustments Made (summary)</label>
+              <label>Adjustments Made</label>
               <textarea data-k="water.adjustments" placeholder="What was added/changed and why…"></textarea>
             </div>
           </div>
         </div>
 
-        <div class="card">
-          <h2>3) Cleaning <span class="sub">Core service tasks</span></h2>
-          <div class="content"><div class="checklist" id="cleaningList"></div></div>
-        </div>
-
-        <div class="card">
-          <h2>4) Equipment Check <span class="sub">Verify operation / note issues</span></h2>
-          <div class="content"><div class="checklist" id="equipmentList"></div></div>
-        </div>
-
-        <div class="card">
-          <h2>5) Visual / Safety <span class="sub">Condition + safety observations</span></h2>
-          <div class="content"><div class="checklist" id="visualList"></div></div>
-        </div>
+        <div class="card"><h2>3) Cleaning <span class="sub">Core service tasks</span></h2><div class="content"><div class="checklist" id="cleaningList"></div></div></div>
+        <div class="card"><h2>4) Equipment Check <span class="sub">Verify operation / note issues</span></h2><div class="content"><div class="checklist" id="equipmentList"></div></div></div>
+        <div class="card"><h2>5) Visual / Safety <span class="sub">Condition + safety observations</span></h2><div class="content"><div class="checklist" id="visualList"></div></div></div>
 
         <div class="card">
           <h2>6) Chemicals Added <span class="sub">Document product + amount</span></h2>
@@ -500,43 +445,50 @@
                   <option>Urgent (ASAP)</option>
                 </select>
               </div>
-              <div>
-                <label>Estimated Cost Range (optional)</label>
-                <input data-k="issues.estimate" placeholder="e.g., $150–$300" />
-              </div>
+              <div><label>Estimated Cost Range (opt)</label><input data-k="issues.estimate" placeholder="e.g., $150–$300" /></div>
             </div>
-            <div>
-              <label>Issues Found / Recommendations</label>
-              <textarea data-k="issues.notes" placeholder="Describe issues, suspected cause, and recommended next steps…"></textarea>
-            </div>
+            <div><label>Issues Found / Recommendations</label><textarea data-k="issues.notes" placeholder="Describe issues, suspected cause, recommended next steps…"></textarea></div>
           </div>
         </div>
 
         <div class="card">
           <h2>8) Customer Notes + Tech Signature <span class="sub">Leave a clear summary</span></h2>
           <div class="content">
-            <div>
-              <label>Customer Notes / Summary</label>
-              <textarea data-k="customer.summary" placeholder="What the customer should know (water condition, next visit, reminders)…"></textarea>
-            </div>
+            <div><label>Customer Notes / Summary</label><textarea data-k="customer.summary" placeholder="What the customer should know…"></textarea></div>
             <div class="row two">
-              <div>
-                <label>Tech Signature (type name)</label>
-                <input data-k="customer.signature" placeholder="Type full name" />
-              </div>
-              <div>
-                <label>Customer Acknowledgement (optional)</label>
-                <input data-k="customer.ack" placeholder="Customer initials / name" />
-              </div>
+              <div><label>Tech Signature</label><input data-k="customer.signature" placeholder="Type full name" /></div>
+              <div><label>Customer Acknowledgement (opt)</label><input data-k="customer.ack" placeholder="Customer initials / name" /></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- RIGHT: CAPTURE -->
+      <!-- RIGHT -->
       <div class="rightCol">
         <div class="card">
-          <h2>Record Snapshot <span class="sub">Captured by “Save as Image”</span></h2>
+          <h2>Visit History <span class="sub">Saved by Finish Visit</span></h2>
+          <div class="content">
+            <div class="histTop">
+              <div class="left">
+                <label>Search</label>
+                <input id="histSearch" placeholder="Search customer, address, tech…" />
+              </div>
+              <div style="min-width:220px;">
+                <label>Records</label>
+                <input id="histCount" readonly />
+              </div>
+            </div>
+            <div class="divider"></div>
+            <div class="inlineBtns">
+              <button class="ghost miniBtn" id="btnClearHistory" type="button">Clear History</button>
+            </div>
+            <div class="histList" id="histList"></div>
+            <p class="small" style="margin:10px 0 0;">History is stored on this device/browser.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Record Snapshot <span class="sub">Captured by Save as Image</span></h2>
           <div class="captureWrap">
             <div class="capture" id="captureArea">
               <div class="captureHeader">
@@ -580,14 +532,8 @@
               </div>
 
               <div class="row two">
-                <div>
-                  <label>Issues / Priority</label>
-                  <textarea id="capIssues" readonly></textarea>
-                </div>
-                <div>
-                  <label>Chemicals Added</label>
-                  <textarea id="capChems" readonly></textarea>
-                </div>
+                <div><label>Issues / Priority</label><textarea id="capIssues" readonly></textarea></div>
+                <div><label>Chemicals Added</label><textarea id="capChems" readonly></textarea></div>
               </div>
 
               <div class="divider"></div>
@@ -612,17 +558,11 @@
               <div class="divider"></div>
 
               <div class="row two">
-                <div>
-                  <label>Customer Summary</label>
-                  <textarea id="capSummary" readonly></textarea>
-                </div>
-                <div>
-                  <label>Signature</label>
-                  <input id="capSig" readonly />
-                </div>
+                <div><label>Customer Summary</label><textarea id="capSummary" readonly></textarea></div>
+                <div><label>Signature</label><input id="capSig" readonly /></div>
               </div>
 
-              <p class="small" style="margin:10px 0 0;">File naming uses: <b>Customer + Date</b>.</p>
+              <p class="small" style="margin:10px 0 0;">Filename uses: <b>Customer + Date</b>.</p>
             </div>
           </div>
         </div>
@@ -630,7 +570,7 @@
     </div>
   </div>
 
-  <!-- Task Editor Modal -->
+  <!-- Customize Tasks Modal -->
   <div class="modalBackdrop" id="modalBackdrop" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-label="Customize Tasks">
       <div class="modalHead">
@@ -669,13 +609,16 @@
     </div>
   </div>
 
-  <!-- html2canvas for “Save as Image” -->
+  <!-- html2canvas -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <script>
-    const STORAGE_KEY = "bf_pool_checklist_v3_draft";
-    const TASKS_KEY   = "bf_pool_checklist_v3_tasks";
+    // ---------------- Storage keys ----------------
+    const KEY_TASKS   = "bf_checklist_tasks_v4";
+    const KEY_HISTORY = "bf_checklist_history_v4";
+    const KEY_DRAFT   = "bf_checklist_draft_v4";
 
+    // ---------------- Defaults ----------------
     const DEFAULT_TASKS = {
       cleaning: [
         { title:"Skim surface", help:"Remove leaves/debris from surface." },
@@ -688,15 +631,15 @@
       ],
       equipment: [
         { title:"Pump running / prime OK", help:"No air leaks; normal sound." },
-        { title:"Filter PSI normal", help:"Record PSI. Note if rising quickly." },
+        { title:"Filter PSI normal", help:"Record PSI; note if rising quickly." },
         { title:"Heater operation check (if present)", help:"No error codes; verify ignition/flow." },
         { title:"Salt system (SWG) status", help:"Check % output, lights, cell condition." },
-        { title:"Timer/automation schedule verified", help:"Correct run times; update if needed." },
+        { title:"Timer/automation schedule verified", help:"Correct run times; adjust if needed." },
         { title:"Valves set correctly", help:"Skimmer/main drain/features as desired." },
         { title:"Visual leak check", help:"Pad plumbing, pump seal, filter, heater unions." }
       ],
       visual: [
-        { title:"Water clarity", help:"Clear / slightly hazy / cloudy — note in comments." },
+        { title:"Water clarity", help:"Clear / hazy / cloudy — note in comments." },
         { title:"Algae check", help:"Steps, corners, returns, deep end." },
         { title:"Stains / scale", help:"Metal stains, calcium scale, plaster spotting." },
         { title:"Deck hazards", help:"Trip hazards, slippery areas, drainage issues." },
@@ -704,6 +647,7 @@
       ]
     };
 
+    // ---------------- Helpers ----------------
     function deepClone(o){ return JSON.parse(JSON.stringify(o)); }
     function escapeHtml(s){
       return String(s ?? "")
@@ -728,9 +672,12 @@
       }
       return cur ?? "";
     }
-    function formatDate(d){
-      const pad = n => String(n).padStart(2,"0");
-      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    function pad(n){ return String(n).padStart(2,"0"); }
+    function fmtDate(d){ return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`; }
+    function fmtTime(d){ return `${pad(d.getHours())}:${pad(d.getMinutes())}`; }
+    function fmtWhen(ts){
+      const d = new Date(ts);
+      return `${fmtDate(d)} ${fmtTime(d)}`;
     }
     function safeFileName(s){
       return (s||"").toString().trim()
@@ -739,18 +686,19 @@
         .slice(0,60) || "Customer";
     }
 
+    // ---------------- Tasks ----------------
     function loadTasks(){
-      const raw = localStorage.getItem(TASKS_KEY);
+      const raw = localStorage.getItem(KEY_TASKS);
       if(!raw) return deepClone(DEFAULT_TASKS);
       try{
-        const parsed = JSON.parse(raw);
-        if(!parsed || !parsed.cleaning || !parsed.equipment || !parsed.visual) throw new Error("bad");
-        return parsed;
+        const t = JSON.parse(raw);
+        if(!t || !t.cleaning || !t.equipment || !t.visual) throw new Error("bad");
+        return t;
       }catch(e){
         return deepClone(DEFAULT_TASKS);
       }
     }
-    function saveTasks(tasks){ localStorage.setItem(TASKS_KEY, JSON.stringify(tasks)); }
+    function saveTasks(tasks){ localStorage.setItem(KEY_TASKS, JSON.stringify(tasks)); }
     let TASKS = loadTasks();
 
     function slugKey(section, idx){ return `task.${section}.${idx}`; }
@@ -789,7 +737,6 @@
         wrap.appendChild(el);
       });
     }
-
     function renderAll(){
       renderList("cleaningList","cleaning", TASKS.cleaning);
       renderList("equipmentList","equipment", TASKS.equipment);
@@ -797,7 +744,56 @@
       syncCapture();
     }
 
-    // Chemicals table
+    // ---------------- Photos ----------------
+    const PHOTO = { before:"", after:"" };
+
+    function setPhoto(which, dataUrl){
+      PHOTO[which] = dataUrl || "";
+
+      const img = document.getElementById(which + "Img");
+      const ph  = document.getElementById(which + "Ph");
+      const capImg = document.getElementById("cap" + (which==="before"?"Before":"After") + "Img");
+      const capPh  = document.getElementById("cap" + (which==="before"?"Before":"After") + "Ph");
+
+      if(PHOTO[which]){
+        img.src = PHOTO[which]; img.style.display = "block"; ph.style.display = "none";
+        capImg.src = PHOTO[which]; capImg.style.display = "block"; capPh.style.display = "none";
+      }else{
+        img.removeAttribute("src"); img.style.display = "none"; ph.style.display = "block";
+        capImg.removeAttribute("src"); capImg.style.display = "none"; capPh.style.display = "block";
+      }
+      syncCapture();
+    }
+
+    async function fileToDataUrl(file, maxDim=1400, quality=0.85){
+      const bitmap = await createImageBitmap(file);
+      let { width, height } = bitmap;
+      const scale = Math.min(1, maxDim / Math.max(width, height));
+      width = Math.round(width * scale);
+      height = Math.round(height * scale);
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(bitmap, 0, 0, width, height);
+      return canvas.toDataURL("image/jpeg", quality);
+    }
+
+    document.getElementById("beforeFile").addEventListener("change", async (e)=>{
+      const f = e.target.files?.[0]; if(!f) return;
+      setPhoto("before", await fileToDataUrl(f));
+      e.target.value = "";
+    });
+    document.getElementById("afterFile").addEventListener("change", async (e)=>{
+      const f = e.target.files?.[0]; if(!f) return;
+      setPhoto("after", await fileToDataUrl(f));
+      e.target.value = "";
+    });
+    document.getElementById("beforeClear").addEventListener("click", ()=> setPhoto("before",""));
+    document.getElementById("afterClear").addEventListener("click", ()=> setPhoto("after",""));
+
+    // ---------------- Chemicals table ----------------
     const chemBody = document.querySelector("#chemTable tbody");
     function addChemRow(rowData={product:"", amount:"", unit:"", notes:""}){
       const tr = document.createElement("tr");
@@ -816,84 +812,14 @@
     document.getElementById("chemAdd").addEventListener("click", ()=>{ addChemRow(); syncCapture(); });
     document.getElementById("chemClear").addEventListener("click", ()=>{
       if(confirm("Clear all chemical rows?")){
-        chemBody.innerHTML="";
-        addChemRow();
-        syncCapture();
+        chemBody.innerHTML=""; addChemRow(); syncCapture();
       }
     });
     addChemRow();
 
-    // Photo state (data URLs)
-    const PHOTO = { before:"", after:"" };
-
-    function setPhoto(which, dataUrl){
-      PHOTO[which] = dataUrl || "";
-
-      const img = document.getElementById(which + "Img");
-      const ph  = document.getElementById(which + "Ph");
-      const capImg = document.getElementById("cap" + (which==="before"?"Before":"After") + "Img");
-      const capPh  = document.getElementById("cap" + (which==="before"?"Before":"After") + "Ph");
-
-      if(PHOTO[which]){
-        img.src = PHOTO[which];
-        img.style.display = "block";
-        ph.style.display = "none";
-
-        capImg.src = PHOTO[which];
-        capImg.style.display = "block";
-        capPh.style.display = "none";
-      }else{
-        img.removeAttribute("src");
-        img.style.display = "none";
-        ph.style.display = "block";
-
-        capImg.removeAttribute("src");
-        capImg.style.display = "none";
-        capPh.style.display = "block";
-      }
-
-      syncCapture();
-    }
-
-    async function fileToDataUrl(file, maxDim=1400, quality=0.85){
-      // compress large phone photos to keep storage reasonable
-      const bitmap = await createImageBitmap(file);
-      let { width, height } = bitmap;
-      const scale = Math.min(1, maxDim / Math.max(width, height));
-      width = Math.round(width * scale);
-      height = Math.round(height * scale);
-
-      const canvas = document.createElement("canvas");
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(bitmap, 0, 0, width, height);
-
-      // Use JPEG for smaller size (still fine in screenshot)
-      return canvas.toDataURL("image/jpeg", quality);
-    }
-
-    document.getElementById("beforeFile").addEventListener("change", async (e)=>{
-      const f = e.target.files?.[0];
-      if(!f) return;
-      const url = await fileToDataUrl(f);
-      setPhoto("before", url);
-      e.target.value = "";
-    });
-    document.getElementById("afterFile").addEventListener("change", async (e)=>{
-      const f = e.target.files?.[0];
-      if(!f) return;
-      const url = await fileToDataUrl(f);
-      setPhoto("after", url);
-      e.target.value = "";
-    });
-
-    document.getElementById("beforeClear").addEventListener("click", ()=> setPhoto("before",""));
-    document.getElementById("afterClear").addEventListener("click", ()=> setPhoto("after",""));
-
-    // Collect/apply
+    // ---------------- Draft / Record collection ----------------
     function collect(){
-      const data = { version:3, ts: Date.now() };
+      const data = { version:4, ts: Date.now() };
 
       document.querySelectorAll("[data-k]").forEach(el=>{
         const key = el.getAttribute("data-k");
@@ -936,15 +862,13 @@
       if(Array.isArray(data.chems) && data.chems.length) data.chems.forEach(r=>addChemRow(r));
       else addChemRow();
 
-      const pb = data.photos?.before || "";
-      const pa = data.photos?.after || "";
-      setPhoto("before", pb);
-      setPhoto("after", pa);
+      setPhoto("before", data.photos?.before || "");
+      setPhoto("after", data.photos?.after || "");
 
       syncCapture();
     }
 
-    // Completed tasks (checked only)
+    // ---------------- Completed tasks (checked only) ----------------
     function checkedTaskSummaryCheckedOnly(){
       const titles = [];
       document.querySelectorAll('.checklist input[type="checkbox"][data-task="1"]:checked').forEach(cb=>{
@@ -976,6 +900,7 @@
 
     function syncCapture(){
       const data = collect();
+
       const customer = getByPath(data,"job.customer");
       const address  = getByPath(data,"job.address");
       const date     = getByPath(data,"job.date");
@@ -1002,21 +927,140 @@
 
       document.getElementById("capMeta").textContent =
         `${customer||"Customer"} • ${address||"Address"} • ${date||"Date"}`;
+
+      // Draft autosave (lightweight)
+      localStorage.setItem(KEY_DRAFT, JSON.stringify(data));
     }
 
-    // Draft controls
-    function saveDraft(){
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(collect()));
-      toast("Saved draft to this device.");
+    // ---------------- History ----------------
+    function loadHistory(){
+      const raw = localStorage.getItem(KEY_HISTORY);
+      if(!raw) return [];
+      try{
+        const arr = JSON.parse(raw);
+        return Array.isArray(arr) ? arr : [];
+      }catch(e){
+        return [];
+      }
     }
-    function loadDraft(){
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if(!raw){ toast("No saved draft found on this device."); return; }
-      try{ apply(JSON.parse(raw)); toast("Loaded last saved draft."); }
-      catch(e){ alert("Saved data is corrupted or unreadable."); }
+    function saveHistory(arr){ localStorage.setItem(KEY_HISTORY, JSON.stringify(arr)); }
+
+    let HISTORY = loadHistory();
+    let ACTIVE_RECORD_ID = null;
+
+    function recordTitle(rec){
+      const c = getByPath(rec,"job.customer") || "Customer";
+      const d = getByPath(rec,"job.date") || fmtDate(new Date(rec.ts || Date.now()));
+      return `${c} • ${d}`;
     }
-    function resetAll(){
-      if(!confirm("Reset the entire checklist?")) return;
+    function recordSubtitle(rec){
+      const addr = getByPath(rec,"job.address") || "Address";
+      const tech = getByPath(rec,"job.tech") || "Tech";
+      const when = fmtWhen(rec.ts || Date.now());
+      return `${when} • ${tech} • ${addr}`;
+    }
+
+    function renderHistory(){
+      const q = (document.getElementById("histSearch").value || "").trim().toLowerCase();
+      const list = document.getElementById("histList");
+      list.innerHTML = "";
+
+      // newest first
+      const shown = HISTORY
+        .slice()
+        .sort((a,b)=>(b.ts||0)-(a.ts||0))
+        .filter(rec=>{
+          if(!q) return true;
+          const hay = [
+            getByPath(rec,"job.customer"),
+            getByPath(rec,"job.address"),
+            getByPath(rec,"job.tech"),
+            getByPath(rec,"job.poolType"),
+          ].join(" ").toLowerCase();
+          return hay.includes(q);
+        });
+
+      document.getElementById("histCount").value = `${HISTORY.length} saved • ${shown.length} shown`;
+
+      if(!shown.length){
+        const empty = document.createElement("div");
+        empty.className = "small";
+        empty.textContent = "No matching records yet. Use Finish Visit to create one.";
+        list.appendChild(empty);
+        return;
+      }
+
+      shown.forEach(rec=>{
+        const item = document.createElement("div");
+        item.className = "histItem";
+
+        const meta = document.createElement("div");
+        meta.className = "histMeta";
+        meta.innerHTML = `
+          <p class="t">${escapeHtml(recordTitle(rec))}${rec.id===ACTIVE_RECORD_ID ? " • (open)" : ""}</p>
+          <p class="s">${escapeHtml(recordSubtitle(rec))}</p>
+        `;
+
+        const btns = document.createElement("div");
+        btns.className = "histBtns";
+        btns.innerHTML = `
+          <button class="ghost miniBtn" data-act="open" data-id="${rec.id}">Open</button>
+          <button class="ghost miniBtn" data-act="dup" data-id="${rec.id}">Duplicate</button>
+          <button class="danger miniBtn" data-act="del" data-id="${rec.id}">Delete</button>
+        `;
+
+        item.appendChild(meta);
+        item.appendChild(btns);
+        list.appendChild(item);
+      });
+    }
+
+    function upsertRecord(rec){
+      const idx = HISTORY.findIndex(r=>r.id===rec.id);
+      if(idx>=0) HISTORY[idx] = rec;
+      else HISTORY.push(rec);
+
+      // cap history to reduce storage issues
+      if(HISTORY.length > 200){
+        HISTORY = HISTORY.sort((a,b)=>(b.ts||0)-(a.ts||0)).slice(0,200);
+      }
+
+      saveHistory(HISTORY);
+      renderHistory();
+    }
+
+    function finishVisit(){
+      const data = collect();
+
+      const customer = (getByPath(data,"job.customer")||"").trim();
+      const date = (getByPath(data,"job.date")||"").trim();
+      const tech = (getByPath(data,"job.tech")||"").trim();
+
+      // light guardrails (no blocking, just confirm)
+      if(!customer || !date || !tech){
+        const ok = confirm("Customer, Date, or Tech is blank. Save record anyway?");
+        if(!ok) return;
+      }
+
+      const now = Date.now();
+      const rec = {
+        ...data,
+        id: `rec_${now}_${Math.random().toString(16).slice(2)}`,
+        ts: now
+      };
+
+      upsertRecord(rec);
+      ACTIVE_RECORD_ID = rec.id;
+      toast("Saved record to history.");
+
+      // Optional: prep next job
+      const goNext = confirm("Record saved. Start a NEW visit now (clear form)?");
+      if(goNext) newVisit();
+      else renderHistory();
+    }
+
+    function newVisit(){
+      // keep tasks customized, but clear visit fields/photos/chems/checks
       document.querySelectorAll("[data-k]").forEach(el=>{
         if(el.type === "checkbox") el.checked = false;
         else el.value = "";
@@ -1026,33 +1070,102 @@
       setPhoto("before","");
       setPhoto("after","");
       setDefaults();
+      ACTIVE_RECORD_ID = null;
       syncCapture();
+      renderHistory();
+      toast("Ready for next visit.");
     }
 
-    // Export/import
+    function openRecord(id){
+      const rec = HISTORY.find(r=>r.id===id);
+      if(!rec) return;
+      ACTIVE_RECORD_ID = id;
+      apply(rec);
+      toast("Opened record.");
+      renderHistory();
+    }
+
+    function deleteRecord(id){
+      const rec = HISTORY.find(r=>r.id===id);
+      if(!rec) return;
+      const ok = confirm(`Delete this record?\n\n${recordTitle(rec)}`);
+      if(!ok) return;
+      HISTORY = HISTORY.filter(r=>r.id!==id);
+      if(ACTIVE_RECORD_ID===id) ACTIVE_RECORD_ID = null;
+      saveHistory(HISTORY);
+      renderHistory();
+      toast("Record deleted.");
+    }
+
+    function duplicateRecord(id){
+      const rec = HISTORY.find(r=>r.id===id);
+      if(!rec) return;
+      const now = Date.now();
+      const copy = JSON.parse(JSON.stringify(rec));
+      copy.id = `rec_${now}_${Math.random().toString(16).slice(2)}`;
+      copy.ts = now;
+      upsertRecord(copy);
+      toast("Record duplicated.");
+    }
+
+    document.getElementById("histList").addEventListener("click", (e)=>{
+      const btn = e.target.closest("button[data-act]");
+      if(!btn) return;
+      const act = btn.getAttribute("data-act");
+      const id = btn.getAttribute("data-id");
+      if(act==="open") openRecord(id);
+      if(act==="del") deleteRecord(id);
+      if(act==="dup") duplicateRecord(id);
+    });
+
+    document.getElementById("histSearch").addEventListener("input", renderHistory);
+
+    document.getElementById("btnClearHistory").addEventListener("click", ()=>{
+      const ok = confirm("Clear ALL saved history on this device?");
+      if(!ok) return;
+      HISTORY = [];
+      ACTIVE_RECORD_ID = null;
+      saveHistory(HISTORY);
+      renderHistory();
+      toast("History cleared.");
+    });
+
+    // ---------------- Export / Import ----------------
     function exportJSON(){
-      const data = collect();
-      const customer = safeFileName(getByPath(data,"job.customer"));
-      const date = getByPath(data,"job.date") || formatDate(new Date());
-      const filename = `BF_Checklist_${customer}_${date}.json`;
-      const blob = new Blob([JSON.stringify(data,null,2)], {type:"application/json"});
+      const payload = {
+        exportedAt: Date.now(),
+        tasks: TASKS,
+        history: HISTORY
+      };
+      const filename = `BF_Checklist_HISTORY_${fmtDate(new Date())}.json`;
+      const blob = new Blob([JSON.stringify(payload,null,2)], {type:"application/json"});
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url; a.download = filename;
       document.body.appendChild(a); a.click(); a.remove();
       URL.revokeObjectURL(url);
     }
+
     async function importJSON(file){
-      try{ apply(JSON.parse(await file.text())); toast("Imported checklist JSON."); }
-      catch(e){ alert("Could not import that file."); }
+      try{
+        const text = await file.text();
+        const payload = JSON.parse(text);
+        if(payload.tasks) { TASKS = payload.tasks; saveTasks(TASKS); }
+        if(Array.isArray(payload.history)) { HISTORY = payload.history; saveHistory(HISTORY); }
+        renderAll();
+        renderHistory();
+        toast("Imported tasks + history.");
+      }catch(e){
+        alert("Could not import that file.");
+      }
     }
 
-    // Save as image
+    // ---------------- Save as Image ----------------
     async function saveAsImage(){
       syncCapture();
       const data = collect();
       const customer = safeFileName(getByPath(data,"job.customer"));
-      const date = getByPath(data,"job.date") || formatDate(new Date());
+      const date = getByPath(data,"job.date") || fmtDate(new Date());
       const filename = `BF_Checklist_${customer}_${date}.png`;
       const node = document.getElementById("captureArea");
       try{
@@ -1071,19 +1184,21 @@
       }
     }
 
-    // Defaults
+    // ---------------- Defaults & Reset ----------------
     function setDefaults(){
       const dateEl = document.querySelector('[data-k="job.date"]');
       const timeEl = document.querySelector('[data-k="job.time"]');
       const now = new Date();
-      if(dateEl && !dateEl.value) dateEl.value = formatDate(now);
-      if(timeEl && !timeEl.value){
-        const pad = n => String(n).padStart(2,"0");
-        timeEl.value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
-      }
+      if(dateEl && !dateEl.value) dateEl.value = fmtDate(now);
+      if(timeEl && !timeEl.value) timeEl.value = fmtTime(now);
     }
 
-    // Toast
+    function resetAll(){
+      if(!confirm("Reset current form? (History will stay)")) return;
+      newVisit();
+    }
+
+    // ---------------- Toast ----------------
     let toastTimer = null;
     function toast(msg){
       clearTimeout(toastTimer);
@@ -1101,7 +1216,7 @@
         t.style.background="rgba(0,0,0,.55)";
         t.style.backdropFilter="blur(8px)";
         t.style.color="rgba(238,242,255,.92)";
-        t.style.fontWeight="800";
+        t.style.fontWeight="900";
         t.style.fontSize="13px";
         t.style.zIndex="9999";
         document.body.appendChild(t);
@@ -1111,7 +1226,7 @@
       toastTimer = setTimeout(()=>{ t.style.opacity="0"; }, 2200);
     }
 
-    // Customize modal
+    // ---------------- Customize modal ----------------
     const modal = document.getElementById("modalBackdrop");
     const editCleaning  = document.getElementById("editCleaning");
     const editEquipment = document.getElementById("editEquipment");
@@ -1170,17 +1285,17 @@
     }
     modal.addEventListener("click",(e)=>{ if(e.target===modal) closeModal(); });
 
-    // Buttons
+    // ---------------- Events ----------------
     document.getElementById("btnCustomize").addEventListener("click", openModal);
     document.getElementById("btnCloseModal").addEventListener("click", closeModal);
     document.getElementById("btnSaveTasks").addEventListener("click", saveTasksFromEditor);
     document.getElementById("btnDefaults").addEventListener("click", resetTasksToDefaults);
 
-    document.getElementById("btnSave").addEventListener("click", saveDraft);
-    document.getElementById("btnLoad").addEventListener("click", loadDraft);
-    document.getElementById("btnExport").addEventListener("click", exportJSON);
-    document.getElementById("btnReset").addEventListener("click", resetAll);
+    document.getElementById("btnNewVisit").addEventListener("click", newVisit);
+    document.getElementById("btnFinish").addEventListener("click", finishVisit);
     document.getElementById("btnImage").addEventListener("click", saveAsImage);
+    document.getElementById("btnExport").addEventListener("click", exportJSON);
+    document.getElementById("btnResetAll").addEventListener("click", resetAll);
 
     document.getElementById("importFile").addEventListener("change", async (e)=>{
       const f=e.target.files?.[0];
@@ -1188,7 +1303,7 @@
       e.target.value="";
     });
 
-    // Live capture updates
+    // Update capture on edits
     document.addEventListener("input",(e)=>{
       const t=e.target;
       if(t.matches("[data-k], [data-chem]")) syncCapture();
@@ -1198,12 +1313,21 @@
       if(t.matches("[data-k], [data-chem]")) syncCapture();
     });
 
-    // Init
+    // ---------------- Init ----------------
     setDefaults();
     renderAll();
-    setPhoto("before","");
-    setPhoto("after","");
-    syncCapture();
+
+    // Load last draft if exists
+    const draftRaw = localStorage.getItem(KEY_DRAFT);
+    if(draftRaw){
+      try{ apply(JSON.parse(draftRaw)); }catch(e){}
+    }else{
+      setPhoto("before","");
+      setPhoto("after","");
+      syncCapture();
+    }
+
+    renderHistory();
   </script>
 </body>
 </html>
