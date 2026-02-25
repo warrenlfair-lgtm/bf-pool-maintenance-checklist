@@ -1,0 +1,1059 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BF Outdoor Services • Pool Maintenance Checklist</title>
+  <meta name="theme-color" content="#0b1220" />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#121b2e;
+      --card2:#0f172a;
+      --line:rgba(255,255,255,.12);
+      --text:#eef2ff;
+      --muted:rgba(238,242,255,.72);
+      --ok:#22c55e;
+      --warn:#fbbf24;
+      --bad:#ef4444;
+      --blue:#3b82f6;
+      --chip:#1f2a44;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius:18px;
+      --radius2:14px;
+      --pad:14px;
+      --font: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 20% -10%, rgba(59,130,246,.35), transparent 60%),
+        radial-gradient(900px 600px at 90% 0%, rgba(34,197,94,.25), transparent 55%),
+        radial-gradient(1200px 700px at 50% 110%, rgba(251,191,36,.18), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit}
+    .wrap{max-width:1100px; margin:22px auto; padding:0 14px 40px;}
+    .topbar{
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+      padding:14px; border:1px solid var(--line); border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(18,27,46,.92), rgba(15,23,42,.88));
+      box-shadow:var(--shadow);
+    }
+    .brand{display:flex; gap:12px; align-items:center}
+    .logo{
+      width:58px; height:58px; border-radius:14px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .logo img{width:100%; height:100%; object-fit:contain; background:#fff}
+    .title h1{font-size:18px; margin:0; letter-spacing:.2px}
+    .title p{margin:3px 0 0; font-size:12px; color:var(--muted)}
+    .actions{display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end}
+    button, .btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:650;
+      font-size:13px;
+      letter-spacing:.2px;
+      transition:transform .05s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
+    }
+    button:hover{background:rgba(255,255,255,.10)}
+    button:active{transform:translateY(1px)}
+    .primary{
+      background:linear-gradient(180deg, rgba(59,130,246,.95), rgba(37,99,235,.92));
+      border-color:rgba(59,130,246,.45);
+    }
+    .primary:hover{background:linear-gradient(180deg, rgba(59,130,246,1), rgba(37,99,235,1))}
+    .danger{
+      background:linear-gradient(180deg, rgba(239,68,68,.92), rgba(220,38,38,.92));
+      border-color:rgba(239,68,68,.35);
+    }
+    .danger:hover{background:linear-gradient(180deg, rgba(239,68,68,1), rgba(220,38,38,1))}
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    @media(min-width:980px){
+      .grid{grid-template-columns: 1.15fr .85fr;}
+    }
+    .card{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(18,27,46,.92), rgba(15,23,42,.88));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card h2{
+      margin:0;
+      padding:14px 14px 10px;
+      font-size:15px;
+      letter-spacing:.2px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.12);
+    }
+    .card .sub{
+      font-size:12px; color:var(--muted); font-weight:550;
+    }
+    .content{padding:14px}
+    .row{display:grid; grid-template-columns: 1fr; gap:10px; margin-bottom:10px}
+    @media(min-width:640px){ .row.two{grid-template-columns:1fr 1fr} }
+    @media(min-width:780px){ .row.three{grid-template-columns:1fr 1fr 1fr} }
+    label{display:block; font-size:12px; color:var(--muted); margin:0 0 6px}
+    input, select, textarea{
+      width:100%;
+      padding:10px 11px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.18);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:92px; resize:vertical}
+    input::placeholder, textarea::placeholder{color:rgba(238,242,255,.40)}
+    .pillrow{display:flex; gap:8px; flex-wrap:wrap}
+    .pill{
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:7px 10px;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .checklist{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+    .item{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:var(--radius2);
+      padding:10px;
+    }
+    .itemTop{
+      display:flex; gap:10px; align-items:flex-start;
+    }
+    .itemTop input[type="checkbox"]{
+      width:18px; height:18px; margin-top:2px;
+      accent-color: var(--ok);
+    }
+    .itemTitle{
+      font-weight:750; font-size:13px; margin:0;
+    }
+    .itemHelp{
+      margin:2px 0 0;
+      font-size:12px; color:var(--muted);
+    }
+    .miniRow{
+      margin-top:8px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:8px;
+    }
+    @media(min-width:680px){
+      .miniRow.two{grid-template-columns:1fr 1fr}
+    }
+    .divider{height:1px; background:var(--line); margin:12px 0}
+    .small{font-size:12px; color:var(--muted)}
+    .rightCol .card{position:sticky; top:14px}
+    .status{
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+      margin-top:10px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px; border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      font-size:12px; color:var(--muted); font-weight:650;
+    }
+    .dot{width:10px; height:10px; border-radius:999px; background:var(--warn)}
+    .dot.ok{background:var(--ok)}
+    .dot.bad{background:var(--bad)}
+    .table{
+      width:100%;
+      border-collapse:collapse;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .table th,.table td{
+      padding:10px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      vertical-align:top;
+      font-size:12px;
+    }
+    .table th{color:var(--muted); text-align:left; background:rgba(0,0,0,.16); font-weight:750}
+    .table tr:last-child td{border-bottom:none}
+    .table input, .table select{
+      padding:8px 9px; border-radius:10px;
+    }
+    .inlineBtns{display:flex; gap:8px; flex-wrap:wrap}
+    .ghost{
+      background:rgba(255,255,255,.04);
+    }
+
+    /* capture area */
+    .captureWrap{ padding:14px; }
+    .capture{
+      background:linear-gradient(180deg, rgba(18,27,46,.94), rgba(15,23,42,.90));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:var(--radius);
+      padding:14px;
+    }
+    .captureHeader{
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      border-bottom:1px solid rgba(255,255,255,.12);
+      padding-bottom:10px; margin-bottom:12px;
+    }
+    .captureHeader .left{
+      display:flex; gap:12px; align-items:center;
+    }
+    .captureHeader .left img{
+      width:42px; height:42px; border-radius:12px; background:#fff; object-fit:contain;
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .captureHeader .meta h3{margin:0; font-size:14px}
+    .captureHeader .meta p{margin:2px 0 0; font-size:12px; color:var(--muted)}
+    .printHint{font-size:12px; color:var(--muted); text-align:right}
+
+    /* print */
+    @media print{
+      body{background:#fff; color:#000}
+      .topbar, .rightCol, .actionsHint{display:none !important}
+      .wrap{max-width:none; margin:0; padding:0}
+      .card{box-shadow:none}
+      .capture{border:1px solid #ccc; background:#fff}
+      .captureHeader .meta p, .small{color:#333}
+      input, textarea, select{border:1px solid #aaa; background:#fff; color:#000}
+      .item{background:#fff}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" title="BF Outdoor Services">
+          <img id="logoImg" alt="BF Outdoor Services Logo"
+               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAYAAABf9R6dAAAgAElEQVR4nOzdeZxkV3k/8N+..." />
+        </div>
+        <div class="title">
+          <h1>Pool Maintenance Checklist</h1>
+          <p>BF Outdoor Services • Fill it out in the field • Save as Image for records</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="ghost" id="btnLoad">Load Last</button>
+        <button class="ghost" id="btnSave">Save Draft</button>
+        <button class="ghost" id="btnExport">Export JSON</button>
+        <label class="btn ghost" for="importFile" style="display:inline-flex;align-items:center;gap:8px;">
+          Import JSON
+        </label>
+        <input id="importFile" type="file" accept="application/json" style="display:none" />
+        <button class="primary" id="btnImage">Save as Image</button>
+        <button class="danger" id="btnReset">Reset</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- LEFT: FORM -->
+      <div class="leftCol">
+        <div class="card">
+          <h2>
+            1) Job Info
+            <span class="sub">Customer, site, tech, pool details</span>
+          </h2>
+          <div class="content">
+            <div class="row two">
+              <div>
+                <label>Customer Name</label>
+                <input data-k="job.customer" placeholder="e.g., Steve Emberton" />
+              </div>
+              <div>
+                <label>Service Address</label>
+                <input data-k="job.address" placeholder="Street, City, State" />
+              </div>
+            </div>
+            <div class="row three">
+              <div>
+                <label>Date</label>
+                <input data-k="job.date" type="date" />
+              </div>
+              <div>
+                <label>Time</label>
+                <input data-k="job.time" type="time" />
+              </div>
+              <div>
+                <label>Technician</label>
+                <input data-k="job.tech" placeholder="Tech name" />
+              </div>
+            </div>
+            <div class="row three">
+              <div>
+                <label>Pool Type</label>
+                <select data-k="job.poolType">
+                  <option value="">Select…</option>
+                  <option>Salt Pool (SWG)</option>
+                  <option>Chlorine (Liquid/Tab)</option>
+                  <option>Mineral / Hybrid</option>
+                  <option>Spool / Combo</option>
+                </select>
+              </div>
+              <div>
+                <label>Gallons</label>
+                <input data-k="job.gallons" inputmode="numeric" placeholder="e.g., 12832" />
+              </div>
+              <div>
+                <label>Weather / Notes</label>
+                <input data-k="job.weather" placeholder="Sunny / cloudy / etc." />
+              </div>
+            </div>
+
+            <div class="pillrow">
+              <div class="pill">Tip: Hit <b>Save Draft</b> after each stop.</div>
+              <div class="pill">Use <b>Save as Image</b> to attach to your records.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>
+            2) Water Test
+            <span class="sub">Record chemistry readings</span>
+          </h2>
+          <div class="content">
+            <div class="row three">
+              <div><label>FC (Free Chlorine)</label><input data-k="water.fc" inputmode="decimal" placeholder="ppm" /></div>
+              <div><label>CC (Combined Chlorine)</label><input data-k="water.cc" inputmode="decimal" placeholder="ppm" /></div>
+              <div><label>pH</label><input data-k="water.ph" inputmode="decimal" placeholder="e.g., 7.5" /></div>
+            </div>
+            <div class="row three">
+              <div><label>TA (Total Alkalinity)</label><input data-k="water.ta" inputmode="decimal" placeholder="ppm" /></div>
+              <div><label>CH (Calcium Hardness)</label><input data-k="water.ch" inputmode="decimal" placeholder="ppm" /></div>
+              <div><label>CYA (Stabilizer)</label><input data-k="water.cya" inputmode="decimal" placeholder="ppm" /></div>
+            </div>
+            <div class="row three">
+              <div><label>Salt (if SWG)</label><input data-k="water.salt" inputmode="decimal" placeholder="ppm" /></div>
+              <div><label>Water Temp</label><input data-k="water.temp" inputmode="decimal" placeholder="°F" /></div>
+              <div><label>Phosphates (optional)</label><input data-k="water.phos" inputmode="decimal" placeholder="ppb" /></div>
+            </div>
+            <div>
+              <label>Adjustments Made (summary)</label>
+              <textarea data-k="water.adjustments" placeholder="What was added/changed and why…"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>
+            3) Cleaning
+            <span class="sub">Core service tasks</span>
+          </h2>
+          <div class="content">
+            <div class="checklist" id="cleaningList"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>
+            4) Equipment Check
+            <span class="sub">Verify operation / note issues</span>
+          </h2>
+          <div class="content">
+            <div class="checklist" id="equipmentList"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>
+            5) Visual / Safety
+            <span class="sub">Condition + safety observations</span>
+          </h2>
+          <div class="content">
+            <div class="checklist" id="visualList"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>
+            6) Chemicals Added
+            <span class="sub">Document product + amount</span>
+          </h2>
+          <div class="content">
+            <table class="table" id="chemTable">
+              <thead>
+                <tr>
+                  <th style="width:26%">Product</th>
+                  <th style="width:16%">Amount</th>
+                  <th style="width:18%">Unit</th>
+                  <th style="width:40%">Notes</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <div class="divider"></div>
+            <div class="inlineBtns">
+              <button class="ghost" id="chemAdd">+ Add Row</button>
+              <button class="ghost" id="chemClear">Clear Rows</button>
+            </div>
+            <p class="small" style="margin:10px 0 0;">Include chlorine, acid, stabilizer, salt, phosphate remover, clarifier, etc.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>
+            7) Issues / Recommendations
+            <span class="sub">Repairs needed + priority</span>
+          </h2>
+          <div class="content">
+            <div class="row two">
+              <div>
+                <label>Priority</label>
+                <select data-k="issues.priority">
+                  <option value="">Select…</option>
+                  <option>Low (monitor)</option>
+                  <option>Medium (schedule soon)</option>
+                  <option>High (needs attention)</option>
+                  <option>Urgent (ASAP)</option>
+                </select>
+              </div>
+              <div>
+                <label>Estimated Cost Range (optional)</label>
+                <input data-k="issues.estimate" placeholder="e.g., $150–$300" />
+              </div>
+            </div>
+            <div>
+              <label>Issues Found / Recommendations</label>
+              <textarea data-k="issues.notes" placeholder="Describe issues, suspected cause, and recommended next steps…"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>
+            8) Customer Notes + Tech Signature
+            <span class="sub">Leave a clear summary</span>
+          </h2>
+          <div class="content">
+            <div>
+              <label>Customer Notes / Summary</label>
+              <textarea data-k="customer.summary" placeholder="What the customer should know (water condition, next visit, reminders)…"></textarea>
+            </div>
+            <div class="row two">
+              <div>
+                <label>Tech Signature (type name)</label>
+                <input data-k="customer.signature" placeholder="Type full name" />
+              </div>
+              <div>
+                <label>Customer Acknowledgement (optional)</label>
+                <input data-k="customer.ack" placeholder="Customer initials / name" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: CAPTURE + STATUS -->
+      <div class="rightCol">
+        <div class="card">
+          <h2>
+            Record Snapshot
+            <span class="sub">This is what gets captured</span>
+          </h2>
+          <div class="captureWrap">
+            <div class="capture" id="captureArea">
+              <div class="captureHeader">
+                <div class="left">
+                  <img id="logoImg2" alt="BF Logo" />
+                  <div class="meta">
+                    <h3>BF Outdoor Services • Pool Maintenance Checklist</h3>
+                    <p id="capMeta">Customer • Address • Date</p>
+                  </div>
+                </div>
+                <div class="printHint">
+                  <div class="small">Tap <b>Save as Image</b></div>
+                  <div class="small">or use browser Print</div>
+                </div>
+              </div>
+
+              <div class="row two">
+                <div>
+                  <label>Customer</label>
+                  <input id="capCustomer" readonly />
+                </div>
+                <div>
+                  <label>Date / Time</label>
+                  <input id="capDateTime" readonly />
+                </div>
+              </div>
+              <div class="row two">
+                <div>
+                  <label>Address</label>
+                  <input id="capAddress" readonly />
+                </div>
+                <div>
+                  <label>Tech</label>
+                  <input id="capTech" readonly />
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="row three">
+                <div><label>FC</label><input id="capFC" readonly /></div>
+                <div><label>pH</label><input id="capPH" readonly /></div>
+                <div><label>CYA</label><input id="capCYA" readonly /></div>
+              </div>
+
+              <div class="row three">
+                <div><label>TA</label><input id="capTA" readonly /></div>
+                <div><label>CH</label><input id="capCH" readonly /></div>
+                <div><label>Salt</label><input id="capSalt" readonly /></div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div>
+                <label>Completed Tasks (checked)</label>
+                <textarea id="capChecks" readonly></textarea>
+              </div>
+
+              <div class="row two">
+                <div>
+                  <label>Issues / Priority</label>
+                  <textarea id="capIssues" readonly></textarea>
+                </div>
+                <div>
+                  <label>Chemicals Added</label>
+                  <textarea id="capChems" readonly></textarea>
+                </div>
+              </div>
+
+              <div class="row two">
+                <div>
+                  <label>Customer Summary</label>
+                  <textarea id="capSummary" readonly></textarea>
+                </div>
+                <div>
+                  <label>Signature</label>
+                  <input id="capSig" readonly />
+                </div>
+              </div>
+
+              <p class="small" style="margin:10px 0 0;">
+                File naming uses: <b>Customer_LastName + Date</b> (editable by editing customer name).
+              </p>
+            </div>
+
+            <div class="status">
+              <span class="badge"><span class="dot" id="dotSave"></span><span id="saveState">Not saved</span></span>
+              <span class="badge"><span class="dot ok" id="dotComplete"></span><span id="completeState">Ready</span></span>
+            </div>
+
+            <div class="actionsHint small" style="margin-top:10px;">
+              Pro tip: On iPhone/iPad you can “Add to Home Screen” for app-like use.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- html2canvas for “Save as Image” -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <script>
+    // ---------- Logo (duplicate for capture header) ----------
+    const logoSrc = document.getElementById("logoImg").src;
+    document.getElementById("logoImg2").src = logoSrc;
+
+    // ---------- Checklist definitions ----------
+    const cleaningItems = [
+      { key:"clean.skim", title:"Skim surface", help:"Remove leaves/debris from surface." },
+      { key:"clean.brush", title:"Brush walls/steps", help:"Brush problem areas, steps, tile line." },
+      { key:"clean.vac", title:"Vacuum / robot cycle", help:"Vacuum pool or run cleaner and confirm movement." },
+      { key:"clean.net", title:"Net bottom debris", help:"Leaf rake if needed." },
+      { key:"clean.baskets", title:"Empty skimmer & pump baskets", help:"Remove debris; inspect baskets for damage." },
+      { key:"clean.waterline", title:"Wipe waterline (as needed)", help:"Spot clean oils/dirt at tile line." },
+      { key:"clean.filter", title:"Backwash / clean filter (if needed)", help:"Record PSI before/after if done." }
+    ];
+
+    const equipmentItems = [
+      { key:"equip.pump", title:"Pump running / prime OK", help:"No air leaks; normal sound." },
+      { key:"equip.filter", title:"Filter PSI normal", help:"Record PSI. Note if rising quickly." },
+      { key:"equip.heater", title:"Heater operation check (if present)", help:"No error codes; verify ignition/flow." },
+      { key:"equip.swg", title:"Salt system (SWG) status", help:"Check % output, lights, cell condition." },
+      { key:"equip.timer", title:"Timer/automation schedule verified", help:"Correct run times; update if needed." },
+      { key:"equip.valves", title:"Valves set correctly", help:"Skimmer/main drain features as desired." },
+      { key:"equip.leaks", title:"Visual leak check", help:"Pad plumbing, pump seal, filter, heater unions." },
+      { key:"equip.bond", title:"Bonding/grounding visual check", help:"Loose lugs / damage noted." }
+    ];
+
+    const visualItems = [
+      { key:"vis.clarity", title:"Water clarity", help:"Clear / slightly hazy / cloudy — note in comments." },
+      { key:"vis.algae", title:"Algae check", help:"Steps, corners, returns, deep end." },
+      { key:"vis.stains", title:"Stains / scale", help:"Metal stains, calcium scale, plaster spotting." },
+      { key:"vis.deck", title:"Deck hazards", help:"Trip hazards, slippery areas, drainage issues." },
+      { key:"vis.fence", title:"Fence/gate (if applicable)", help:"Gate closes/latches; barrier noted." }
+    ];
+
+    // ---------- Render checklist sections ----------
+    function renderList(containerId, items){
+      const wrap = document.getElementById(containerId);
+      wrap.innerHTML = "";
+      items.forEach(it=>{
+        const el = document.createElement("div");
+        el.className = "item";
+        el.innerHTML = `
+          <div class="itemTop">
+            <input type="checkbox" data-k="${it.key}" />
+            <div style="flex:1">
+              <p class="itemTitle">${it.title}</p>
+              <p class="itemHelp">${it.help}</p>
+              <div class="miniRow two">
+                <div>
+                  <label style="margin-top:6px;">Notes (optional)</label>
+                  <input data-k="${it.key}.note" placeholder="Add details if needed…" />
+                </div>
+                <div>
+                  <label style="margin-top:6px;">Status</label>
+                  <select data-k="${it.key}.status">
+                    <option value="">—</option>
+                    <option>OK</option>
+                    <option>Needs Attention</option>
+                    <option>Not Applicable</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        wrap.appendChild(el);
+      });
+    }
+    renderList("cleaningList", cleaningItems);
+    renderList("equipmentList", equipmentItems);
+    renderList("visualList", visualItems);
+
+    // ---------- Chemicals table ----------
+    const chemBody = document.querySelector("#chemTable tbody");
+    function addChemRow(rowData={product:"", amount:"", unit:"", notes:""}){
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><input data-chem="product" placeholder="e.g., Liquid Chlorine" value="${escapeHtml(rowData.product)}"/></td>
+        <td><input data-chem="amount" placeholder="e.g., 1.5" value="${escapeHtml(rowData.amount)}"/></td>
+        <td>
+          <select data-chem="unit">
+            ${["—","gal","qt","lb","oz","cups","ppm target"].map(u=>`<option ${u===rowData.unit?"selected":""}>${u}</option>`).join("")}
+          </select>
+        </td>
+        <td><input data-chem="notes" placeholder="Reason / method" value="${escapeHtml(rowData.notes)}"/></td>
+      `;
+      chemBody.appendChild(tr);
+    }
+    document.getElementById("chemAdd").addEventListener("click", ()=>{ addChemRow(); markDirty(); syncCapture(); });
+    document.getElementById("chemClear").addEventListener("click", ()=>{
+      if(confirm("Clear all chemical rows?")){
+        chemBody.innerHTML="";
+        addChemRow();
+        markDirty();
+        syncCapture();
+      }
+    });
+    addChemRow(); // start with one row
+
+    // ---------- Data store helpers ----------
+    const STORAGE_KEY = "bf_pool_checklist_v1";
+    let lastSaved = null;
+    let dirty = false;
+
+    function setByPath(obj, path, val){
+      const parts = path.split(".");
+      let cur = obj;
+      for(let i=0;i<parts.length-1;i++){
+        cur[parts[i]] = cur[parts[i]] || {};
+        cur = cur[parts[i]];
+      }
+      cur[parts[parts.length-1]] = val;
+    }
+    function getByPath(obj, path){
+      const parts = path.split(".");
+      let cur = obj;
+      for(const p of parts){
+        if(cur==null) return "";
+        cur = cur[p];
+      }
+      return cur ?? "";
+    }
+    function escapeHtml(s){
+      return String(s ?? "")
+        .replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;").replaceAll("'","&#039;");
+    }
+
+    function collect(){
+      const data = { version:1, ts: Date.now() };
+      document.querySelectorAll("[data-k]").forEach(el=>{
+        const key = el.getAttribute("data-k");
+        const isCheck = el.type === "checkbox";
+        const val = isCheck ? !!el.checked : (el.value ?? "");
+        setByPath(data, key, val);
+      });
+
+      // chems
+      const chems = [];
+      chemBody.querySelectorAll("tr").forEach(tr=>{
+        const r = {};
+        tr.querySelectorAll("[data-chem]").forEach(inp=>{
+          r[inp.getAttribute("data-chem")] = inp.value ?? "";
+        });
+        // ignore empty fully blank rows
+        const any = (r.product||"").trim() || (r.amount||"").trim() || (r.notes||"").trim();
+        if(any) chems.push(r);
+      });
+      data.chems = chems;
+
+      return data;
+    }
+
+    function apply(data){
+      document.querySelectorAll("[data-k]").forEach(el=>{
+        const key = el.getAttribute("data-k");
+        const val = getByPath(data, key);
+        if(el.type === "checkbox") el.checked = !!val;
+        else el.value = val ?? "";
+      });
+
+      // chems
+      chemBody.innerHTML = "";
+      if(Array.isArray(data.chems) && data.chems.length){
+        data.chems.forEach(r=>addChemRow(r));
+      }else{
+        addChemRow();
+      }
+
+      dirty = false;
+      updateSaveBadge();
+      syncCapture();
+    }
+
+    function save(){
+      const data = collect();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      lastSaved = Date.now();
+      dirty = false;
+      updateSaveBadge();
+      toast("Saved draft to this device.");
+    }
+
+    function load(){
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw){ toast("No saved draft found on this device."); return; }
+      try{
+        const data = JSON.parse(raw);
+        apply(data);
+        lastSaved = Date.now();
+        toast("Loaded last saved draft.");
+      }catch(e){
+        alert("Saved data is corrupted or unreadable.");
+      }
+    }
+
+    function resetAll(){
+      if(!confirm("Reset the entire checklist? This clears the form (but does not delete exported files).")) return;
+      document.querySelectorAll("[data-k]").forEach(el=>{
+        if(el.type === "checkbox") el.checked = false;
+        else el.value = "";
+      });
+      chemBody.innerHTML = "";
+      addChemRow();
+      dirty = true;
+      updateSaveBadge();
+      syncCapture();
+    }
+
+    function markDirty(){
+      dirty = true;
+      updateSaveBadge();
+    }
+
+    function updateSaveBadge(){
+      const dot = document.getElementById("dotSave");
+      const text = document.getElementById("saveState");
+      if(dirty){
+        dot.className = "dot warn";
+        dot.style.background = "var(--warn)";
+        text.textContent = "Unsaved changes";
+      }else{
+        dot.className = "dot ok";
+        dot.style.background = "var(--ok)";
+        text.textContent = "Saved / clean";
+      }
+    }
+
+    // ---------- Capture panel sync ----------
+    function formatDate(d){
+      const pad = n => String(n).padStart(2,"0");
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    }
+    function safeFileName(s){
+      return (s||"").toString().trim()
+        .replaceAll(/[^a-zA-Z0-9]+/g,"_")
+        .replaceAll(/^_+|_+$/g,"")
+        .slice(0,60) || "Customer";
+    }
+
+    function checkedTaskSummary(data){
+      const all = [...cleaningItems, ...equipmentItems, ...visualItems];
+      const done = [];
+      all.forEach(it=>{
+        const checked = !!getByPath(data, it.key);
+        if(checked) done.push(it.title);
+      });
+      return done.length ? done.join(", ") : "—";
+    }
+
+    function chemicalsSummary(data){
+      if(!Array.isArray(data.chems) || !data.chems.length) return "—";
+      return data.chems.map(r=>{
+        const u = (r.unit && r.unit !== "—") ? ` ${r.unit}` : "";
+        const amt = (r.amount||"").trim();
+        const prod = (r.product||"").trim();
+        const notes = (r.notes||"").trim();
+        const main = `${prod}${amt?` • ${amt}${u}`:""}`.trim();
+        return notes ? `${main} (${notes})` : main;
+      }).join("\n");
+    }
+
+    function issuesSummary(data){
+      const pr = getByPath(data, "issues.priority") || "—";
+      const est = getByPath(data, "issues.estimate") || "";
+      const notes = getByPath(data, "issues.notes") || "";
+      const head = `Priority: ${pr}${est?` • Est: ${est}`:""}`;
+      const body = notes.trim() ? notes.trim() : "—";
+      return `${head}\n${body}`;
+    }
+
+    function syncCapture(){
+      const data = collect();
+
+      const customer = getByPath(data,"job.customer");
+      const address = getByPath(data,"job.address");
+      const date = getByPath(data,"job.date");
+      const time = getByPath(data,"job.time");
+      const tech = getByPath(data,"job.tech");
+
+      document.getElementById("capCustomer").value = customer || "—";
+      document.getElementById("capAddress").value = address || "—";
+      document.getElementById("capTech").value = tech || "—";
+      document.getElementById("capDateTime").value = `${date||"—"} ${time||""}`.trim();
+
+      document.getElementById("capFC").value = getByPath(data,"water.fc") || "—";
+      document.getElementById("capPH").value = getByPath(data,"water.ph") || "—";
+      document.getElementById("capCYA").value = getByPath(data,"water.cya") || "—";
+      document.getElementById("capTA").value = getByPath(data,"water.ta") || "—";
+      document.getElementById("capCH").value = getByPath(data,"water.ch") || "—";
+      document.getElementById("capSalt").value = getByPath(data,"water.salt") || "—";
+
+      document.getElementById("capChecks").value = checkedTaskSummary(data);
+      document.getElementById("capChems").value = chemicalsSummary(data);
+      document.getElementById("capIssues").value = issuesSummary(data);
+      document.getElementById("capSummary").value = getByPath(data,"customer.summary") || "—";
+      document.getElementById("capSig").value = getByPath(data,"customer.signature") || "—";
+
+      const meta = `${customer||"Customer"} • ${address||"Address"} • ${date||"Date"}`;
+      document.getElementById("capMeta").textContent = meta;
+
+      // completion indicator (very light)
+      const completeText = document.getElementById("completeState");
+      const dotComplete = document.getElementById("dotComplete");
+      const hasCustomer = (customer||"").trim().length > 0;
+      const hasDate = (date||"").trim().length > 0;
+      const hasSig = (getByPath(data,"customer.signature")||"").trim().length > 0;
+
+      if(hasCustomer && hasDate && hasSig){
+        dotComplete.className = "dot ok";
+        completeText.textContent = "Looks complete";
+      }else{
+        dotComplete.className = "dot warn";
+        dotComplete.style.background = "var(--warn)";
+        completeText.textContent = "Add customer, date, signature";
+      }
+    }
+
+    // ---------- Events to track changes ----------
+    function bindChangeEvents(){
+      document.addEventListener("input", (e)=>{
+        const t = e.target;
+        if(t.matches("[data-k], [data-chem]")){
+          markDirty();
+          syncCapture();
+        }
+      });
+      document.addEventListener("change", (e)=>{
+        const t = e.target;
+        if(t.matches("[data-k], [data-chem]")){
+          markDirty();
+          syncCapture();
+        }
+      });
+    }
+    bindChangeEvents();
+    syncCapture();
+    updateSaveBadge();
+
+    // ---------- Buttons ----------
+    document.getElementById("btnSave").addEventListener("click", save);
+    document.getElementById("btnLoad").addEventListener("click", load);
+    document.getElementById("btnReset").addEventListener("click", resetAll);
+
+    // Export JSON
+    document.getElementById("btnExport").addEventListener("click", ()=>{
+      const data = collect();
+      const customer = safeFileName(getByPath(data,"job.customer"));
+      const date = getByPath(data,"job.date") || formatDate(new Date());
+      const filename = `BF_Checklist_${customer}_${date}.json`;
+
+      const blob = new Blob([JSON.stringify(data,null,2)], {type:"application/json"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    // Import JSON
+    document.getElementById("importFile").addEventListener("change", async (e)=>{
+      const f = e.target.files?.[0];
+      if(!f) return;
+      try{
+        const text = await f.text();
+        const data = JSON.parse(text);
+        apply(data);
+        markDirty();
+        syncCapture();
+        toast("Imported checklist JSON.");
+      }catch(err){
+        alert("Could not import that file.");
+      }finally{
+        e.target.value = "";
+      }
+    });
+
+    // Save as Image
+    document.getElementById("btnImage").addEventListener("click", async ()=>{
+      syncCapture();
+      const data = collect();
+      const customer = safeFileName(getByPath(data,"job.customer"));
+      const date = getByPath(data,"job.date") || formatDate(new Date());
+      const filename = `BF_Checklist_${customer}_${date}.png`;
+
+      const node = document.getElementById("captureArea");
+
+      try{
+        const canvas = await html2canvas(node, {
+          backgroundColor: null,
+          scale: 2,
+          useCORS: true
+        });
+        canvas.toBlob((blob)=>{
+          if(!blob){ alert("Could not create image."); return; }
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+          toast("Saved image for records.");
+        }, "image/png");
+      }catch(err){
+        alert("Image capture failed. Try using browser Print as a fallback.");
+      }
+    });
+
+    // ---------- Friendly toast ----------
+    let toastTimer = null;
+    function toast(msg){
+      clearTimeout(toastTimer);
+      let t = document.getElementById("toast");
+      if(!t){
+        t = document.createElement("div");
+        t.id = "toast";
+        t.style.position="fixed";
+        t.style.left="50%";
+        t.style.bottom="18px";
+        t.style.transform="translateX(-50%)";
+        t.style.padding="10px 12px";
+        t.style.borderRadius="999px";
+        t.style.border="1px solid rgba(255,255,255,.18)";
+        t.style.background="rgba(0,0,0,.55)";
+        t.style.backdropFilter="blur(8px)";
+        t.style.color="rgba(238,242,255,.92)";
+        t.style.fontWeight="650";
+        t.style.fontSize="13px";
+        t.style.zIndex="9999";
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      t.style.opacity="1";
+      toastTimer = setTimeout(()=>{ t.style.opacity="0"; }, 2200);
+    }
+
+    // ---------- Smart default date/time ----------
+    (function setDefaults(){
+      const dateEl = document.querySelector('[data-k="job.date"]');
+      const timeEl = document.querySelector('[data-k="job.time"]');
+      const now = new Date();
+      if(!dateEl.value) dateEl.value = formatDate(now);
+      if(!timeEl.value){
+        const pad = n => String(n).padStart(2,"0");
+        timeEl.value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+      }
+      syncCapture();
+    })();
+
+    // ---------- Prevent giant embedded base64 in editor ----------
+    // NOTE: Replace the truncated base64 above with your full logo base64 if you want fully offline.
+    // If you keep it as-is (truncated), the logo won't render. See note below.
+
+  </script>
+
+  <!--
+    IMPORTANT NOTE ABOUT YOUR LOGO:
+    I intentionally TRUNCATED the base64 string in this message with "iVBORw0K...".
+    To make the logo render correctly, do one of these:
+
+    Option A (EASIEST - recommended):
+      1) Put your logo file in the same folder as this HTML
+      2) Replace the <img src="data:image/png;base64,..."> with:
+         src="69a1d74e-e790-41b7-9b66-c2c873365fef.png"
+      3) Done.
+
+    Option B (Fully single-file offline):
+      Tell me "embed the logo fully" and I’ll paste the COMPLETE base64 line (it’s just long).
+
+    Either way, everything else will work.
+  -->
+</body>
+</html>
