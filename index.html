@@ -9,7 +9,6 @@
     :root{
       --bg:#0b1220;
       --card:#121b2e;
-      --card2:#0f172a;
       --line:rgba(255,255,255,.12);
       --text:#eef2ff;
       --muted:rgba(238,242,255,.72);
@@ -146,10 +145,8 @@
     }
     @media(min-width:680px){ .miniRow.two{grid-template-columns:1fr 1fr} }
 
-    /* Right column sticky */
     .rightCol .card{position:sticky; top:14px}
 
-    /* Chemicals table */
     .table{
       width:100%;
       border-collapse:collapse;
@@ -166,7 +163,6 @@
     .table th{color:var(--muted); text-align:left; background:rgba(0,0,0,.16); font-weight:800}
     .table tr:last-child td{border-bottom:none}
     .table input, .table select{padding:8px 9px; border-radius:10px;}
-
     .inlineBtns{display:flex; gap:8px; flex-wrap:wrap}
 
     /* Capture area */
@@ -185,6 +181,47 @@
     .captureHeader h3{margin:0; font-size:14px}
     .captureHeader p{margin:2px 0 0; font-size:12px; color:var(--muted)}
     .printHint{font-size:12px; color:var(--muted); text-align:right}
+
+    /* Photos */
+    .photoGrid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+    @media(min-width:640px){
+      .photoGrid{grid-template-columns:1fr 1fr;}
+    }
+    .photoBox{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:14px;
+      padding:10px;
+    }
+    .photoTop{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom:8px;
+    }
+    .photoTop .name{font-weight:800; font-size:13px}
+    .thumb{
+      width:100%;
+      aspect-ratio: 4 / 3;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.18);
+      overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .thumb img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:none;
+    }
+    .thumb .placeholder{
+      color:rgba(238,242,255,.55);
+      font-size:12px;
+      padding:10px;
+      text-align:center;
+    }
 
     /* Modal */
     .modalBackdrop{
@@ -207,6 +244,7 @@
       display:flex; align-items:center; justify-content:space-between; gap:10px;
       border-bottom:1px solid rgba(255,255,255,.12);
       background:rgba(0,0,0,.12);
+      flex-wrap:wrap;
     }
     .modalHead h3{margin:0; font-size:15px}
     .modalBody{padding:14px}
@@ -225,9 +263,11 @@
     @media(min-width:900px){
       .twoCols{grid-template-columns:1fr 1fr 1fr;}
     }
-    .sectionEditor textarea{min-height:240px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+    .sectionEditor textarea{
+      min-height:240px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
     .sectionEditor h4{margin:0 0 8px; font-size:13px}
-    .sectionEditor .small{margin-top:6px}
     .pill{
       display:inline-flex; gap:8px; align-items:center;
       border:1px solid rgba(255,255,255,.14);
@@ -258,7 +298,7 @@
         <div class="mark" title="BF Outdoor Services">BF</div>
         <div class="title">
           <h1>Pool Maintenance Checklist</h1>
-          <p>BF Outdoor Services • Fill it out • Save as Image for records</p>
+          <p>BF Outdoor Services • Save as Image for records • Before/After photos supported</p>
         </div>
       </div>
 
@@ -329,7 +369,55 @@
                 <input data-k="job.weather" placeholder="Sunny / cloudy / etc." />
               </div>
             </div>
-            <span class="pill">Tip: use <b>Customize Tasks</b> one time, then it stays on this device.</span>
+          </div>
+        </div>
+
+        <!-- Photos -->
+        <div class="card">
+          <h2>
+            Photos
+            <span class="sub">Before + After (optional)</span>
+          </h2>
+          <div class="content">
+            <div class="photoGrid">
+              <div class="photoBox">
+                <div class="photoTop">
+                  <div class="name">Before Photo</div>
+                  <div class="inlineBtns">
+                    <label class="btn ghost" for="beforeFile">Add</label>
+                    <button class="ghost" type="button" id="beforeClear">Clear</button>
+                  </div>
+                </div>
+                <input id="beforeFile" type="file" accept="image/*" capture="environment" style="display:none" />
+                <div class="thumb">
+                  <img id="beforeImg" alt="Before preview" />
+                  <div class="placeholder" id="beforePh">No before photo added.</div>
+                </div>
+                <div class="small" style="margin-top:8px;">Tip: Take a quick “overall” shot (waterline + deck area).</div>
+              </div>
+
+              <div class="photoBox">
+                <div class="photoTop">
+                  <div class="name">After Photo</div>
+                  <div class="inlineBtns">
+                    <label class="btn ghost" for="afterFile">Add</label>
+                    <button class="ghost" type="button" id="afterClear">Clear</button>
+                  </div>
+                </div>
+                <input id="afterFile" type="file" accept="image/*" capture="environment" style="display:none" />
+                <div class="thumb">
+                  <img id="afterImg" alt="After preview" />
+                  <div class="placeholder" id="afterPh">No after photo added.</div>
+                </div>
+                <div class="small" style="margin-top:8px;">Tip: Match the angle of the before photo if you can.</div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+            <div class="small">
+              Photos are included in the <b>Record Snapshot</b> and captured when you hit <b>Save as Image</b>.
+              (Export JSON will be larger if photos are included.)
+            </div>
           </div>
         </div>
 
@@ -362,40 +450,22 @@
         </div>
 
         <div class="card">
-          <h2>
-            3) Cleaning
-            <span class="sub">Core service tasks</span>
-          </h2>
-          <div class="content">
-            <div class="checklist" id="cleaningList"></div>
-          </div>
+          <h2>3) Cleaning <span class="sub">Core service tasks</span></h2>
+          <div class="content"><div class="checklist" id="cleaningList"></div></div>
         </div>
 
         <div class="card">
-          <h2>
-            4) Equipment Check
-            <span class="sub">Verify operation / note issues</span>
-          </h2>
-          <div class="content">
-            <div class="checklist" id="equipmentList"></div>
-          </div>
+          <h2>4) Equipment Check <span class="sub">Verify operation / note issues</span></h2>
+          <div class="content"><div class="checklist" id="equipmentList"></div></div>
         </div>
 
         <div class="card">
-          <h2>
-            5) Visual / Safety
-            <span class="sub">Condition + safety observations</span>
-          </h2>
-          <div class="content">
-            <div class="checklist" id="visualList"></div>
-          </div>
+          <h2>5) Visual / Safety <span class="sub">Condition + safety observations</span></h2>
+          <div class="content"><div class="checklist" id="visualList"></div></div>
         </div>
 
         <div class="card">
-          <h2>
-            6) Chemicals Added
-            <span class="sub">Document product + amount</span>
-          </h2>
+          <h2>6) Chemicals Added <span class="sub">Document product + amount</span></h2>
           <div class="content">
             <table class="table" id="chemTable">
               <thead>
@@ -410,18 +480,14 @@
             </table>
             <div class="divider"></div>
             <div class="inlineBtns">
-              <button class="ghost" id="chemAdd">+ Add Row</button>
-              <button class="ghost" id="chemClear">Clear Rows</button>
+              <button class="ghost" id="chemAdd" type="button">+ Add Row</button>
+              <button class="ghost" id="chemClear" type="button">Clear Rows</button>
             </div>
-            <p class="small" style="margin:10px 0 0;">Include chlorine, acid, stabilizer, salt, phosphate remover, clarifier, etc.</p>
           </div>
         </div>
 
         <div class="card">
-          <h2>
-            7) Issues / Recommendations
-            <span class="sub">Repairs needed + priority</span>
-          </h2>
+          <h2>7) Issues / Recommendations <span class="sub">Repairs needed + priority</span></h2>
           <div class="content">
             <div class="row two">
               <div>
@@ -447,10 +513,7 @@
         </div>
 
         <div class="card">
-          <h2>
-            8) Customer Notes + Tech Signature
-            <span class="sub">Leave a clear summary</span>
-          </h2>
+          <h2>8) Customer Notes + Tech Signature <span class="sub">Leave a clear summary</span></h2>
           <div class="content">
             <div>
               <label>Customer Notes / Summary</label>
@@ -473,10 +536,7 @@
       <!-- RIGHT: CAPTURE -->
       <div class="rightCol">
         <div class="card">
-          <h2>
-            Record Snapshot
-            <span class="sub">This is what gets captured</span>
-          </h2>
+          <h2>Record Snapshot <span class="sub">Captured by “Save as Image”</span></h2>
           <div class="captureWrap">
             <div class="capture" id="captureArea">
               <div class="captureHeader">
@@ -486,7 +546,7 @@
                 </div>
                 <div class="printHint">
                   <div class="small">Tap <b>Save as Image</b></div>
-                  <div class="small">or use browser Print</div>
+                  <div class="small">or browser Print</div>
                 </div>
               </div>
 
@@ -530,6 +590,27 @@
                 </div>
               </div>
 
+              <div class="divider"></div>
+
+              <div class="photoGrid">
+                <div class="photoBox">
+                  <div class="photoTop"><div class="name">Before</div></div>
+                  <div class="thumb">
+                    <img id="capBeforeImg" alt="Before in report" />
+                    <div class="placeholder" id="capBeforePh">No before photo.</div>
+                  </div>
+                </div>
+                <div class="photoBox">
+                  <div class="photoTop"><div class="name">After</div></div>
+                  <div class="thumb">
+                    <img id="capAfterImg" alt="After in report" />
+                    <div class="placeholder" id="capAfterPh">No after photo.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
               <div class="row two">
                 <div>
                   <label>Customer Summary</label>
@@ -541,14 +622,8 @@
                 </div>
               </div>
 
-              <p class="small" style="margin:10px 0 0;">
-                File naming uses: <b>Customer + Date</b>.
-              </p>
+              <p class="small" style="margin:10px 0 0;">File naming uses: <b>Customer + Date</b>.</p>
             </div>
-
-            <p class="small" style="margin:10px 0 0;">
-              Note: Only checked tasks appear in “Completed Tasks.”
-            </p>
           </div>
         </div>
       </div>
@@ -561,45 +636,34 @@
       <div class="modalHead">
         <h3>Customize Tasks</h3>
         <div class="inlineBtns">
-          <button class="ghost" id="btnDefaults">Reset to Defaults</button>
-          <button class="primary" id="btnSaveTasks">Save Tasks</button>
-          <button class="danger" id="btnCloseModal">Close</button>
+          <button class="ghost" id="btnDefaults" type="button">Reset to Defaults</button>
+          <button class="primary" id="btnSaveTasks" type="button">Save Tasks</button>
+          <button class="danger" id="btnCloseModal" type="button">Close</button>
         </div>
       </div>
       <div class="modalBody">
         <div class="hintBox">
           <div class="small">
-            Edit tasks below. Format is one task per line:
-            <br><b>Title</b> (required) <span style="opacity:.7">| Help text (optional)</span>
+            One task per line:
+            <br><b>Title</b> <span style="opacity:.7">| Help (optional)</span>
             <br>Example: <code>Brush walls | Steps, corners, tile line</code>
           </div>
-          <span class="pill">These tasks save on this device (localStorage).</span>
+          <span class="pill">Tasks save on this device automatically.</span>
         </div>
 
         <div class="twoCols">
           <div class="sectionEditor">
             <h4>Cleaning Tasks</h4>
             <textarea id="editCleaning"></textarea>
-            <div class="small">Tip: remove lines you don’t want; add new lines anytime.</div>
           </div>
-
           <div class="sectionEditor">
             <h4>Equipment Tasks</h4>
             <textarea id="editEquipment"></textarea>
-            <div class="small">Tip: keep them short for clean reports.</div>
           </div>
-
           <div class="sectionEditor">
             <h4>Visual / Safety Tasks</h4>
             <textarea id="editVisual"></textarea>
-            <div class="small">Tip: “Fence/gate” can be your last line if it’s optional.</div>
           </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="small">
-          If you ever want logos back, we’ll add it once you confirm the final brand mark.
         </div>
       </div>
     </div>
@@ -609,11 +673,9 @@
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <script>
-    // ---------------- Storage keys ----------------
-    const STORAGE_KEY = "bf_pool_checklist_v2_draft";
-    const TASKS_KEY   = "bf_pool_checklist_v2_tasks";
+    const STORAGE_KEY = "bf_pool_checklist_v3_draft";
+    const TASKS_KEY   = "bf_pool_checklist_v3_tasks";
 
-    // ---------------- Default tasks (editable via UI) ----------------
     const DEFAULT_TASKS = {
       cleaning: [
         { title:"Skim surface", help:"Remove leaves/debris from surface." },
@@ -643,37 +705,59 @@
     };
 
     function deepClone(o){ return JSON.parse(JSON.stringify(o)); }
+    function escapeHtml(s){
+      return String(s ?? "")
+        .replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;").replaceAll("'","&#039;");
+    }
+    function setByPath(obj, path, val){
+      const parts = path.split(".");
+      let cur = obj;
+      for(let i=0;i<parts.length-1;i++){
+        cur[parts[i]] = cur[parts[i]] || {};
+        cur = cur[parts[i]];
+      }
+      cur[parts[parts.length-1]] = val;
+    }
+    function getByPath(obj, path){
+      const parts = path.split(".");
+      let cur = obj;
+      for(const p of parts){
+        if(cur==null) return "";
+        cur = cur[p];
+      }
+      return cur ?? "";
+    }
+    function formatDate(d){
+      const pad = n => String(n).padStart(2,"0");
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    }
+    function safeFileName(s){
+      return (s||"").toString().trim()
+        .replaceAll(/[^a-zA-Z0-9]+/g,"_")
+        .replaceAll(/^_+|_+$/g,"")
+        .slice(0,60) || "Customer";
+    }
 
-    // ---------------- Task state ----------------
     function loadTasks(){
       const raw = localStorage.getItem(TASKS_KEY);
       if(!raw) return deepClone(DEFAULT_TASKS);
       try{
         const parsed = JSON.parse(raw);
-        // minimal validation
-        if(!parsed || !parsed.cleaning || !parsed.equipment || !parsed.visual) throw new Error("bad tasks");
+        if(!parsed || !parsed.cleaning || !parsed.equipment || !parsed.visual) throw new Error("bad");
         return parsed;
       }catch(e){
         return deepClone(DEFAULT_TASKS);
       }
     }
-
-    function saveTasks(tasks){
-      localStorage.setItem(TASKS_KEY, JSON.stringify(tasks));
-    }
-
+    function saveTasks(tasks){ localStorage.setItem(TASKS_KEY, JSON.stringify(tasks)); }
     let TASKS = loadTasks();
 
-    // ---------------- Render checklists ----------------
-    function slugKey(section, idx){
-      // Stable per render order. (If you reorder tasks, old checks are effectively new tasks — acceptable.)
-      return `task.${section}.${idx}`;
-    }
+    function slugKey(section, idx){ return `task.${section}.${idx}`; }
 
     function renderList(containerId, sectionName, items){
       const wrap = document.getElementById(containerId);
       wrap.innerHTML = "";
-
       items.forEach((it, idx)=>{
         const baseKey = slugKey(sectionName, idx);
         const el = document.createElement("div");
@@ -710,10 +794,10 @@
       renderList("cleaningList","cleaning", TASKS.cleaning);
       renderList("equipmentList","equipment", TASKS.equipment);
       renderList("visualList","visual", TASKS.visual);
-      syncCapture(); // update after re-render
+      syncCapture();
     }
 
-    // ---------------- Chemicals table ----------------
+    // Chemicals table
     const chemBody = document.querySelector("#chemTable tbody");
     function addChemRow(rowData={product:"", amount:"", unit:"", notes:""}){
       const tr = document.createElement("tr");
@@ -739,44 +823,77 @@
     });
     addChemRow();
 
-    // ---------------- Data helpers ----------------
-    function setByPath(obj, path, val){
-      const parts = path.split(".");
-      let cur = obj;
-      for(let i=0;i<parts.length-1;i++){
-        cur[parts[i]] = cur[parts[i]] || {};
-        cur = cur[parts[i]];
+    // Photo state (data URLs)
+    const PHOTO = { before:"", after:"" };
+
+    function setPhoto(which, dataUrl){
+      PHOTO[which] = dataUrl || "";
+
+      const img = document.getElementById(which + "Img");
+      const ph  = document.getElementById(which + "Ph");
+      const capImg = document.getElementById("cap" + (which==="before"?"Before":"After") + "Img");
+      const capPh  = document.getElementById("cap" + (which==="before"?"Before":"After") + "Ph");
+
+      if(PHOTO[which]){
+        img.src = PHOTO[which];
+        img.style.display = "block";
+        ph.style.display = "none";
+
+        capImg.src = PHOTO[which];
+        capImg.style.display = "block";
+        capPh.style.display = "none";
+      }else{
+        img.removeAttribute("src");
+        img.style.display = "none";
+        ph.style.display = "block";
+
+        capImg.removeAttribute("src");
+        capImg.style.display = "none";
+        capPh.style.display = "block";
       }
-      cur[parts[parts.length-1]] = val;
-    }
-    function getByPath(obj, path){
-      const parts = path.split(".");
-      let cur = obj;
-      for(const p of parts){
-        if(cur==null) return "";
-        cur = cur[p];
-      }
-      return cur ?? "";
-    }
-    function escapeHtml(s){
-      return String(s ?? "")
-        .replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;").replaceAll("'","&#039;");
-    }
-    function formatDate(d){
-      const pad = n => String(n).padStart(2,"0");
-      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-    }
-    function safeFileName(s){
-      return (s||"").toString().trim()
-        .replaceAll(/[^a-zA-Z0-9]+/g,"_")
-        .replaceAll(/^_+|_+$/g,"")
-        .slice(0,60) || "Customer";
+
+      syncCapture();
     }
 
-    // ---------------- Collect/apply draft ----------------
+    async function fileToDataUrl(file, maxDim=1400, quality=0.85){
+      // compress large phone photos to keep storage reasonable
+      const bitmap = await createImageBitmap(file);
+      let { width, height } = bitmap;
+      const scale = Math.min(1, maxDim / Math.max(width, height));
+      width = Math.round(width * scale);
+      height = Math.round(height * scale);
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(bitmap, 0, 0, width, height);
+
+      // Use JPEG for smaller size (still fine in screenshot)
+      return canvas.toDataURL("image/jpeg", quality);
+    }
+
+    document.getElementById("beforeFile").addEventListener("change", async (e)=>{
+      const f = e.target.files?.[0];
+      if(!f) return;
+      const url = await fileToDataUrl(f);
+      setPhoto("before", url);
+      e.target.value = "";
+    });
+    document.getElementById("afterFile").addEventListener("change", async (e)=>{
+      const f = e.target.files?.[0];
+      if(!f) return;
+      const url = await fileToDataUrl(f);
+      setPhoto("after", url);
+      e.target.value = "";
+    });
+
+    document.getElementById("beforeClear").addEventListener("click", ()=> setPhoto("before",""));
+    document.getElementById("afterClear").addEventListener("click", ()=> setPhoto("after",""));
+
+    // Collect/apply
     function collect(){
-      const data = { version:2, ts: Date.now() };
+      const data = { version:3, ts: Date.now() };
 
       document.querySelectorAll("[data-k]").forEach(el=>{
         const key = el.getAttribute("data-k");
@@ -784,7 +901,6 @@
         setByPath(data, key, val);
       });
 
-      // chemicals
       const chems = [];
       chemBody.querySelectorAll("tr").forEach(tr=>{
         const r = {};
@@ -796,23 +912,19 @@
       });
       data.chems = chems;
 
-      // save tasks snapshot too (so export/import preserves your customized tasks if you want)
       data.tasks = TASKS;
+      data.photos = { before: PHOTO.before || "", after: PHOTO.after || "" };
 
       return data;
     }
 
     function apply(data){
-      // restore tasks first if present
       if(data.tasks && data.tasks.cleaning && data.tasks.equipment && data.tasks.visual){
         TASKS = data.tasks;
         saveTasks(TASKS);
-        renderAll();
-      }else{
-        renderAll();
       }
+      renderAll();
 
-      // apply fields after render
       document.querySelectorAll("[data-k]").forEach(el=>{
         const key = el.getAttribute("data-k");
         const val = getByPath(data, key);
@@ -820,79 +932,19 @@
         else el.value = val ?? "";
       });
 
-      // chemicals
       chemBody.innerHTML = "";
-      if(Array.isArray(data.chems) && data.chems.length){
-        data.chems.forEach(r=>addChemRow(r));
-      }else{
-        addChemRow();
-      }
+      if(Array.isArray(data.chems) && data.chems.length) data.chems.forEach(r=>addChemRow(r));
+      else addChemRow();
+
+      const pb = data.photos?.before || "";
+      const pa = data.photos?.after || "";
+      setPhoto("before", pb);
+      setPhoto("after", pa);
 
       syncCapture();
     }
 
-    // ---------------- Save/load/export/import/reset ----------------
-    function saveDraft(){
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(collect()));
-      toast("Saved draft to this device.");
-    }
-
-    function loadDraft(){
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if(!raw){ toast("No saved draft found on this device."); return; }
-      try{
-        const data = JSON.parse(raw);
-        apply(data);
-        toast("Loaded last saved draft.");
-      }catch(e){
-        alert("Saved data is corrupted or unreadable.");
-      }
-    }
-
-    function resetAll(){
-      if(!confirm("Reset the entire checklist?")) return;
-      // clear inputs
-      document.querySelectorAll("[data-k]").forEach(el=>{
-        if(el.type === "checkbox") el.checked = false;
-        else el.value = "";
-      });
-      // clear chems
-      chemBody.innerHTML = "";
-      addChemRow();
-      // set date/time defaults
-      setDefaults();
-      syncCapture();
-    }
-
-    function exportJSON(){
-      const data = collect();
-      const customer = safeFileName(getByPath(data,"job.customer"));
-      const date = getByPath(data,"job.date") || formatDate(new Date());
-      const filename = `BF_Checklist_${customer}_${date}.json`;
-
-      const blob = new Blob([JSON.stringify(data,null,2)], {type:"application/json"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    }
-
-    async function importJSON(file){
-      try{
-        const text = await file.text();
-        const data = JSON.parse(text);
-        apply(data);
-        toast("Imported checklist JSON.");
-      }catch(err){
-        alert("Could not import that file.");
-      }
-    }
-
-    // ---------------- Capture: ONLY checked tasks ----------------
+    // Completed tasks (checked only)
     function checkedTaskSummaryCheckedOnly(){
       const titles = [];
       document.querySelectorAll('.checklist input[type="checkbox"][data-task="1"]:checked').forEach(cb=>{
@@ -924,7 +976,6 @@
 
     function syncCapture(){
       const data = collect();
-
       const customer = getByPath(data,"job.customer");
       const address  = getByPath(data,"job.address");
       const date     = getByPath(data,"job.date");
@@ -943,41 +994,75 @@
       document.getElementById("capCH").value   = getByPath(data,"water.ch") || "—";
       document.getElementById("capSalt").value = getByPath(data,"water.salt") || "—";
 
-      // ONLY checked tasks:
       document.getElementById("capChecks").value = checkedTaskSummaryCheckedOnly();
-
-      document.getElementById("capChems").value   = chemicalsSummary(data);
-      document.getElementById("capIssues").value  = issuesSummary(data);
-      document.getElementById("capSummary").value = getByPath(data,"customer.summary") || "—";
-      document.getElementById("capSig").value     = getByPath(data,"customer.signature") || "—";
+      document.getElementById("capChems").value  = chemicalsSummary(data);
+      document.getElementById("capIssues").value = issuesSummary(data);
+      document.getElementById("capSummary").value= getByPath(data,"customer.summary") || "—";
+      document.getElementById("capSig").value    = getByPath(data,"customer.signature") || "—";
 
       document.getElementById("capMeta").textContent =
         `${customer||"Customer"} • ${address||"Address"} • ${date||"Date"}`;
     }
 
-    // ---------------- Save as Image ----------------
+    // Draft controls
+    function saveDraft(){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(collect()));
+      toast("Saved draft to this device.");
+    }
+    function loadDraft(){
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw){ toast("No saved draft found on this device."); return; }
+      try{ apply(JSON.parse(raw)); toast("Loaded last saved draft."); }
+      catch(e){ alert("Saved data is corrupted or unreadable."); }
+    }
+    function resetAll(){
+      if(!confirm("Reset the entire checklist?")) return;
+      document.querySelectorAll("[data-k]").forEach(el=>{
+        if(el.type === "checkbox") el.checked = false;
+        else el.value = "";
+      });
+      chemBody.innerHTML = "";
+      addChemRow();
+      setPhoto("before","");
+      setPhoto("after","");
+      setDefaults();
+      syncCapture();
+    }
+
+    // Export/import
+    function exportJSON(){
+      const data = collect();
+      const customer = safeFileName(getByPath(data,"job.customer"));
+      const date = getByPath(data,"job.date") || formatDate(new Date());
+      const filename = `BF_Checklist_${customer}_${date}.json`;
+      const blob = new Blob([JSON.stringify(data,null,2)], {type:"application/json"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    }
+    async function importJSON(file){
+      try{ apply(JSON.parse(await file.text())); toast("Imported checklist JSON."); }
+      catch(e){ alert("Could not import that file."); }
+    }
+
+    // Save as image
     async function saveAsImage(){
       syncCapture();
       const data = collect();
       const customer = safeFileName(getByPath(data,"job.customer"));
       const date = getByPath(data,"job.date") || formatDate(new Date());
       const filename = `BF_Checklist_${customer}_${date}.png`;
-
       const node = document.getElementById("captureArea");
       try{
-        const canvas = await html2canvas(node, {
-          backgroundColor: null,
-          scale: 2
-        });
+        const canvas = await html2canvas(node, { backgroundColor:null, scale:2 });
         canvas.toBlob((blob)=>{
           if(!blob){ alert("Could not create image."); return; }
           const url = URL.createObjectURL(blob);
           const a = document.createElement("a");
-          a.href = url;
-          a.download = filename;
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
+          a.href = url; a.download = filename;
+          document.body.appendChild(a); a.click(); a.remove();
           URL.revokeObjectURL(url);
           toast("Saved image for records.");
         }, "image/png");
@@ -986,7 +1071,19 @@
       }
     }
 
-    // ---------------- Toast ----------------
+    // Defaults
+    function setDefaults(){
+      const dateEl = document.querySelector('[data-k="job.date"]');
+      const timeEl = document.querySelector('[data-k="job.time"]');
+      const now = new Date();
+      if(dateEl && !dateEl.value) dateEl.value = formatDate(now);
+      if(timeEl && !timeEl.value){
+        const pad = n => String(n).padStart(2,"0");
+        timeEl.value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+      }
+    }
+
+    // Toast
     let toastTimer = null;
     function toast(msg){
       clearTimeout(toastTimer);
@@ -1004,7 +1101,7 @@
         t.style.background="rgba(0,0,0,.55)";
         t.style.backdropFilter="blur(8px)";
         t.style.color="rgba(238,242,255,.92)";
-        t.style.fontWeight="750";
+        t.style.fontWeight="800";
         t.style.fontSize="13px";
         t.style.zIndex="9999";
         document.body.appendChild(t);
@@ -1014,19 +1111,7 @@
       toastTimer = setTimeout(()=>{ t.style.opacity="0"; }, 2200);
     }
 
-    // ---------------- Defaults ----------------
-    function setDefaults(){
-      const dateEl = document.querySelector('[data-k="job.date"]');
-      const timeEl = document.querySelector('[data-k="job.time"]');
-      const now = new Date();
-      if(dateEl && !dateEl.value) dateEl.value = formatDate(now);
-      if(timeEl && !timeEl.value){
-        const pad = n => String(n).padStart(2,"0");
-        timeEl.value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
-      }
-    }
-
-    // ---------------- Customize Modal ----------------
+    // Customize modal
     const modal = document.getElementById("modalBackdrop");
     const editCleaning  = document.getElementById("editCleaning");
     const editEquipment = document.getElementById("editEquipment");
@@ -1034,74 +1119,58 @@
 
     function tasksToText(arr){
       return (arr||[]).map(t=>{
-        const title = (t.title||"").trim();
-        const help  = (t.help||"").trim();
+        const title=(t.title||"").trim();
+        const help=(t.help||"").trim();
         return help ? `${title} | ${help}` : `${title}`;
       }).join("\n");
     }
-
     function textToTasks(text){
-      const lines = (text||"").split("\n").map(l=>l.trim()).filter(Boolean);
-      const out = [];
+      const lines=(text||"").split("\n").map(l=>l.trim()).filter(Boolean);
+      const out=[];
       for(const line of lines){
-        const parts = line.split("|");
-        const title = (parts[0]||"").trim();
-        const help  = (parts.slice(1).join("|")||"").trim();
+        const parts=line.split("|");
+        const title=(parts[0]||"").trim();
+        const help=(parts.slice(1).join("|")||"").trim();
         if(title) out.push({title, help});
       }
       return out;
     }
-
     function openModal(){
       editCleaning.value  = tasksToText(TASKS.cleaning);
       editEquipment.value = tasksToText(TASKS.equipment);
       editVisual.value    = tasksToText(TASKS.visual);
-      modal.style.display = "flex";
+      modal.style.display="flex";
       modal.setAttribute("aria-hidden","false");
     }
     function closeModal(){
-      modal.style.display = "none";
+      modal.style.display="none";
       modal.setAttribute("aria-hidden","true");
     }
-
     function saveTasksFromEditor(){
-      const newTasks = {
-        cleaning:  textToTasks(editCleaning.value),
-        equipment: textToTasks(editEquipment.value),
-        visual:    textToTasks(editVisual.value)
+      const newTasks={
+        cleaning:textToTasks(editCleaning.value),
+        equipment:textToTasks(editEquipment.value),
+        visual:textToTasks(editVisual.value)
       };
-
-      // basic guardrails
-      if(newTasks.cleaning.length === 0)  return alert("Cleaning tasks can't be empty.");
-      if(newTasks.equipment.length === 0) return alert("Equipment tasks can't be empty.");
-      if(newTasks.visual.length === 0)    return alert("Visual tasks can't be empty.");
-
-      TASKS = newTasks;
+      if(!newTasks.cleaning.length)  return alert("Cleaning tasks can't be empty.");
+      if(!newTasks.equipment.length) return alert("Equipment tasks can't be empty.");
+      if(!newTasks.visual.length)    return alert("Visual tasks can't be empty.");
+      TASKS=newTasks;
       saveTasks(TASKS);
-
-      // IMPORTANT: tasks changing means the checklist re-renders (checks map to order)
       renderAll();
       closeModal();
       toast("Tasks saved.");
     }
-
     function resetTasksToDefaults(){
       if(!confirm("Reset tasks to defaults?")) return;
-      TASKS = deepClone(DEFAULT_TASKS);
+      TASKS=deepClone(DEFAULT_TASKS);
       saveTasks(TASKS);
-      editCleaning.value  = tasksToText(TASKS.cleaning);
-      editEquipment.value = tasksToText(TASKS.equipment);
-      editVisual.value    = tasksToText(TASKS.visual);
       renderAll();
-      toast("Tasks reset to defaults.");
+      toast("Tasks reset.");
     }
+    modal.addEventListener("click",(e)=>{ if(e.target===modal) closeModal(); });
 
-    // Close modal by clicking backdrop
-    modal.addEventListener("click", (e)=>{
-      if(e.target === modal) closeModal();
-    });
-
-    // ---------------- Bind events ----------------
+    // Buttons
     document.getElementById("btnCustomize").addEventListener("click", openModal);
     document.getElementById("btnCloseModal").addEventListener("click", closeModal);
     document.getElementById("btnSaveTasks").addEventListener("click", saveTasksFromEditor);
@@ -1114,24 +1183,26 @@
     document.getElementById("btnImage").addEventListener("click", saveAsImage);
 
     document.getElementById("importFile").addEventListener("change", async (e)=>{
-      const f = e.target.files?.[0];
+      const f=e.target.files?.[0];
       if(f) await importJSON(f);
-      e.target.value = "";
+      e.target.value="";
     });
 
-    // any edit updates capture
-    document.addEventListener("input", (e)=>{
-      const t = e.target;
+    // Live capture updates
+    document.addEventListener("input",(e)=>{
+      const t=e.target;
       if(t.matches("[data-k], [data-chem]")) syncCapture();
     });
-    document.addEventListener("change", (e)=>{
-      const t = e.target;
+    document.addEventListener("change",(e)=>{
+      const t=e.target;
       if(t.matches("[data-k], [data-chem]")) syncCapture();
     });
 
-    // ---------------- Init ----------------
+    // Init
     setDefaults();
     renderAll();
+    setPhoto("before","");
+    setPhoto("after","");
     syncCapture();
   </script>
 </body>
